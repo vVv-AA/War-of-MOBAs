@@ -1,0 +1,107 @@
+"shadow_in_the_shadows_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"	"shadow_in_the_shadows"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"fade_time"				 "0.0 0.0 0.0 0.0"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"fade_delay_day"				"5 4 3 2"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"fade_delay_night"				"3 2 1 0"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_invis"
+		{
+			"Passive" "1"
+			"IsHidden"	"1"
+
+			"AllowIllusionDuplicate"	"1"
+
+			"ThinkInterval" "0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/artemis/shadow_in_the_shadows.lua"
+					"Function"		"Shadow"
+				}
+			}
+		}
+
+		"modifier_invis_effect"
+		{
+			"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+			"IsBuff"	"1"
+			"EffectName"		"particles/units/heroes/hero_templar_assassin/templar_assassin_meld.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"OnCreated"
+			{
+				"FireEffect"
+				{
+					"EffectName"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk_smoke.vpcf"
+					"EffectAttachType" "follow_origin"
+					"Target" "CASTER"
+				}
+
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_invisible"
+					"Target"		"CASTER"
+				}
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnAttack"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_invis_effect"
+					"Target"		"CASTER"
+				}
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_invisible"
+					"Target"		"CASTER"
+				}
+			}
+			
+			"OnAbilityExecuted"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_invis_effect"
+					"Target"		"CASTER"
+				}
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_invisible"
+					"Target"		"CASTER"
+				}
+			}
+		}
+	}
+}

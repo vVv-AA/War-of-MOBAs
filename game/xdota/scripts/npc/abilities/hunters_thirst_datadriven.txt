@@ -1,0 +1,98 @@
+"hunters_thirst_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"			 		"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"AbilityTextureName"		"night_stalker_crippling_fear"
+	"AbilityCooldown"			"20 20 20 20"
+
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"			"0 0 0 0"
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"lifesteal"				 	"20 23 25 30"
+		}
+
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"cooldown_reduction"		"1"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"double_reduction"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags"		 "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
+		}
+	}
+
+	"Modifiers"
+	{
+		"double_reduction"
+		{
+			"IsBuff"	"1"
+			"Passive"	"0"
+			"IsHidden"	"0"
+			"Duration"	"8"
+
+			"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+		}
+
+		"cooldown_trigger"
+		{
+			"Passive"		 "1"
+			"IsHidden"			"1"
+
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"heroes/betrayer/hunters_thirst.lua"
+					"Function"				"CooldownReducton"
+				}
+			}
+		}
+
+		"lifesteal_trigger"
+		{
+			"Passive"		 "1"
+			"IsHidden"			"1"
+
+			"OnDealDamage"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"heroes/betrayer/hunters_thirst.lua"
+					"Function"				"ApplyLifeSteal"
+				}
+			}
+		}
+		"modifier_hunter_lifesteal"
+		{
+			"IsHidden"		"1"
+			"OnDealDamage"
+			{
+				"Lifesteal"
+				{
+					"Target"			"ATTACKER"
+					"LifestealPercent"	"%lifesteal"
+				}
+			}
+		}
+	}
+}

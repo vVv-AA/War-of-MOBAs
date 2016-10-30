@@ -1,0 +1,45 @@
+"battle_lust_ranged_old_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"	"battle_lust_range"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"splash_radius"			"240 300 360"
+		}
+
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"splash_damage_percent"	"80 60 40"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_splash_attack_datadriven"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/battle_master/master_soul.lua"
+					"Function"		"Splash"
+				}
+			}
+		}
+	}
+}

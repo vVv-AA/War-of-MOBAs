@@ -1,0 +1,78 @@
+//#=========================================#
+//#				Final Check Pending			#
+//#=========================================#
+"npc_dota_hero_oracle_modified"
+    {
+        "override_hero"     "npc_dota_hero_oracle"
+        "AbilityLayout"     "7"
+        "Model"     "models/heroes/oracle/oracle.vmdl"
+        "SoundSet"      "Hero_Oracle"
+        "IdleSoundLoop"     "Hero_Oracle.IdleLoop"
+        "Enabled"       "1"
+        "HeroUnlockOrder"       "1"
+        "Role"          "Support,Nuker,Disabler,Escape"
+        "Rolelevels"    "3,3,2,1"
+        "Team"      "Good"
+        "Portrait"      "vgui/hud/heroportraits/portrait_oracle"
+        "IdleExpression"        "scenes/oracle/oracle_exp_idle_01.vcd"
+        "ModelScale"        "1.000000"
+        "LoadoutScale"      "1.000000"
+        "CMEnabled"     "1"
+        "NameAliases"       "ora"
+        "url"       "Oracle"
+        "NoCombine"     "0"
+        "PickSound"     "oracle_orac_spawn_01"
+        "BanSound"      "oracle_orac_anger_08"
+        "HeroSelectSoundEffect"     "Hero_Oracle.Pick"
+        "Ability1"      "raven_form_datadriven"
+        "Ability2"      "raven_form_vision_extension"
+        "Ability3"      "arcane_bolt_lua"
+        "Ability4"      "portal_datadriven"
+        "Ability5"      "polybomb_datadriven"
+        "Ability6"      "fate_edict_datadriven"
+        "Ability7"      "oracle_telekinesis_datadriven"
+        "Ability8"      "attribute_bonus"
+        "ArmorPhysical"     "0"
+        "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackDamageMin"       "22"
+        "AttackDamageMax"       "28"
+        "AttackRate"        "1.400000"
+        "AttackAnimationPoint"      "0.300000"
+        "AttackAcquisitionRange"        "800"
+        "AttackRange"       "620"
+        "ProjectileModel"       "particles/units/heroes/hero_oracle/oracle_base_attack.vpcf"
+        "ProjectileSpeed"       "900"
+        "AttributePrimary"      "DOTA_ATTRIBUTE_INTELLECT"
+        "AttributeBaseStrength"     "18"
+        "AttributeStrengthGain"     "1.900000"
+        "AttributeBaseIntelligence"     "23"
+        "AttributeIntelligenceGain"     "2.900000"
+        "AttributeBaseAgility"      "15"
+        "AttributeAgilityGain"      "1.700000"
+        "MovementSpeed"     "305"
+        "MovementTurnRate"      "0.400000"
+        "BoundsHullName"        "DOTA_HULL_SIZE_HERO"
+        "HealthBarOffset"       "240"
+        "particle_folder"       "particles/units/heroes/hero_oracle"
+        "GameSoundsFile"        "soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+        "VoiceFile"     "soundevents/voscripts/game_sounds_vo_oracle.vsndevts"
+        "RenderablePortrait"
+        {
+            "Particles"
+            {
+                "particles/units/heroes/hero_oracle/oracle_loadout.vpcf"
+                {
+                    "0"
+                    {
+                        "type"      "follow_attachment"
+                        "location"      "attach_attack1"
+                    }
+                    "1"
+                    {
+                        "type"      "follow_origin"
+                        "location"      "attach_hitloc"
+                    }
+                }
+            }
+        }
+    }

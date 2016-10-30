@@ -1,0 +1,478 @@
+#ActionPanel {
+    padding-bottom: 0px;
+}
+
+#MinimapSpacer
+{
+    width: 9%;
+    height: 100%;
+    margin-left: -23px;
+    z-index: -1;
+}
+
+/* Portrait */
+#PortraitBorder
+{
+    height: width-percentage(100%);
+    margin-left: -3.8%;
+    width: 16.3%;
+    z-index: 5;
+}
+
+#HeroName
+{
+    width: 45%;
+    height: 28px;
+    vertical-align: bottom;
+    text-align: center;
+    margin-bottom: 65.5%;
+    padding-top: 0px;
+    font-size: 17px;
+    font-family: Goudy Trajan Medium;
+}
+
+#Portrait
+{
+    width: 8%;
+    height: 70%;
+    margin-left: -12%;
+    margin-right: 4%;
+}
+
+#LevelTextBox
+{
+    width: 12%;
+    height: 11%;
+    background-image: url("s2r://panorama/images/hud/element_xp_orb_png.vtex");
+    background-size: 100% 100%;
+    vertical-align: bottom;
+    margin-left: 20.6%;
+    z-index: 2;
+}
+
+#LevelNumber
+{
+    color: #ffffff;
+    font-size: 20px;
+    vertical-align: center;
+    horizontal-align: center;
+    text-shadow: 0px 0px 2px 2.0 #000000;
+}
+
+#XPBar
+{
+    height: 4%;
+    margin-bottom: 2%;
+    vertical-align: bottom;
+    width: 41%;
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#A0741E), color-stop(0.5, #C6AD03), color-stop(0.6, #B77D03), to(#634103));
+    background-size: 100% 100%;
+    margin-left: 32%;
+}
+
+#XPLabel
+{
+    height: 5%;
+    margin-bottom: 1.5%;
+    vertical-align: bottom;
+    width: 41%;
+    margin-left: 32%;
+    text-align: center;
+    font-size: 14px;
+    text-shadow: 0px 0px 2px 2.0 #000000;
+}
+
+#LeftStatsBox
+{
+    margin-left: 2%;
+	flow-children: down;
+}
+
+#RightStatsBox
+{
+    margin-left: 2%;
+}
+.BlackBox
+{
+    width: 46%;
+    height: 60%;
+    margin-left: 8%;
+    margin-bottom: 4%;
+}
+
+#center_left_wide
+{
+    margin-left: -2.9%;
+    width: 13% !important; 
+    height: 90% !important;
+    background-size: 100% 100%;
+    z-index: -1;
+    //opacity: 0.0;
+}
+
+#center_right 
+{
+    width: 29% !important;
+    height: 90% !important;
+    background-size: 100% 100%;
+    vertical-align: bottom;
+    margin-left: -1px;
+}
+.AbilityOverlayRoot
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+	margin-bottom: 4px;
+	margin-left: 10px;
+	flow-children: down;
+}
+#MinimapBorder
+{
+    width: 16.5%;
+    height: 117%;
+    margin-top: -17%;
+    vertical-align: top;
+    background-position: left bottom;
+    background-image: url();
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#ability_list_container
+{
+    flow-children: down;
+    horizontal-align:middle;
+    margin-left: 70px;
+}
+
+#ability_list1
+{
+    flow-children: right;
+    horizontal-align: middle;
+}
+
+#ability_list2
+{
+    flow-children: right;
+    horizontal-align: middle;
+}
+
+
+#SilencedMask {
+    width: 100%;
+    height: 100%;
+    background-image: url("s2r://panorama/images/hud/spells_silenced_png.vtex");
+    background-size: 100% 100%;
+    visibility: collapse;
+}
+
+#LevelUpButton
+{
+	border: 1px solid black;
+    background-color: #c4a529;
+	width: 36px;
+	height: 36px;
+	margin-bottom: -35px;
+	visibility: collapse;
+    margin-left: -8px;
+}
+
+.could_level_up #LevelUpButton
+{
+	visibility: visible;
+}
+
+#LevelUpButton:hover
+{
+    background-color: #9e8b2c;
+}
+
+#LevelUpButtonInset
+{
+	width: 100%;
+	height: 100%;
+	border: 2px solid black;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.9, #c4a529 ), to( #ffffff ) );
+	margin: 1px;
+}
+
+#LevelUpButton:hover #LevelUpButtonInset
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.8, #c4a529 ), to( #ffffff ) );
+}
+
+#LevelUpButton Label
+{
+	text-transform: uppercase;
+	text-shadow: 0px 1px 3px 2.5 #000000;
+	color: white;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+#ButtonAndLevel
+{
+	flow-children: down;
+}
+
+#AbilityButton
+{
+    width: 76px;
+    height: 76px;
+    border: 2px solid transparent;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.is_hidden #AbilityButton
+{
+    visibility: collapse;
+}
+
+.is_passive #AbilityButton
+{
+	border: 2px solid #00000000;
+}
+
+#UpgradeBorder
+{
+	background-color: transparent;
+}
+
+.learnable_ability #UpgradeBorder
+{
+   background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.9, #c4a529 ), to( #ffffff ) );
+}
+
+#AbilityButton:hover
+{
+	border: 2px solid white;
+}
+
+#AbilityButton:active
+{
+	border: 4px solid white;
+}
+
+.no_level DOTAAbilityImage
+{
+	saturation: 0;
+	wash-color: #303030;
+}
+
+.insufficient_mana DOTAAbilityImage
+{
+	saturation: 0;
+	wash-color: #1569be;
+}
+
+.potential_upgrade.no_level DOTAAbilityImage
+{
+	saturation: 1;
+	wash-color: white;
+}
+
+#AbilityStatusBorder
+{
+	border: 2px solid transparent;
+}
+
+.auto_cast_enabled #AbilityStatusBorder
+{
+	border: 4px solid orange;
+}
+
+.toggle_enabled #AbilityStatusBorder
+{
+	border: 4px solid green;
+}
+
+#AbilityLevelContainer
+{
+	horizontal-align: center;
+	flow-children: right;
+}
+
+.LevelPanel
+{
+	width: 12px;
+	height: 12px;
+	margin-left: 1px;
+	margin-right: 1px;
+
+	border-radius: 3px;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #2e2716 ), to( #020302 ) );
+	border: 2px solid #ffffff05;
+}
+
+.active_level.LevelPanel
+{
+	background-color: #ceaa31;
+	border: 2px solid #734918;
+}
+
+#HealthManaBarHolder
+{
+    width: 40%;
+    height: 19%;
+    margin-top: 16%;
+    margin-left: -41%;
+	horizontal-align: left;
+    flow-children: down;
+	border-style: solid;
+    border-width: 3px 3px 3px 3px;
+    border-color: #043404;
+    border-radius: 10px;
+	margin-bottom:53.%;
+
+}
+
+/* Health/Mana bars */
+#HealthBar
+{
+    width: 100%;
+    height: 60%;
+    margin-left: 0%;
+    border-radius: 0px;
+    flow-children: right;
+	horizontal-align: left;
+}
+
+#HealthBarInner
+{
+    width: 70%;
+    height: 100%;
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#83AA5A), color-stop(0.5, #156115), to(#003400));
+    border-style: solid;
+    border-width: 3px 0px 3px 0px;
+    border-color: #043404;
+    overflow: noclip;
+	border-radius: 10px;
+}
+
+#HealthBarLight
+{
+    width: height-percentage(1000%);
+    height: 100%;
+    background-color: gradient( radial, 0% 50%, 0% 0%, 50% 40%, from( #00ff00ff ), to( #00ff0000 ) );
+    opacity: 0.5;
+    border-radius: 10px;
+}
+
+@keyframes 'glowAnim' {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+#HealthBarGlow {
+    width: 5%;
+    margin-left: -5%;
+    height: 100%;
+    background-image: url("s2r://panorama/images/compendium/rightedgeglow_psd.vtex");
+    opacity: 2;
+    background-size: 100% 130%;
+    background-position: center bottom;
+    animation-name: glowAnim;
+    animation-duration: 0.15s;
+    animation-iteration-count: infinite;
+    hue-rotation: -100deg;
+    brightness: 2.5;
+	border-radius: 10px;
+}
+
+#ManaBar
+{
+    width: 100%;
+    height: 40%;
+    border-radius: 10px;
+    flow-children: right;
+}
+
+#ManaBarInner
+{
+    height: 100%;
+    width: 50%;
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#7395BD), color-stop(0.3, #34609F), color-stop(0.31, #0D448C), to(#294D84));
+	border-radius: 10px;
+}
+
+#ManaBarLight
+{
+    width: height-percentage(1000%);
+    height: 100%;
+    background-color: gradient( radial, 0% 50%, 0% 0%, 60% 80%, from( #3B9DFFFF ), to( #3B9DFF00 ) );
+    opacity: 0.6;
+	border-radius: 10px;
+}
+
+#ManaBarGlow {
+    width: 5%;
+    margin-left: -5%;
+    height: 100%;
+    background-image: url("s2r://panorama/images/compendium/rightedgeglow_psd.vtex");
+    opacity: 2;
+    background-size: 100% 130%;
+    background-position: center bottom;
+    animation-name: glowAnim;
+    animation-duration: 0.15s;
+    animation-iteration-count: infinite;
+    brightness: 2.5;
+	border-radius: 10px;
+}
+
+#CurrentMana
+{
+    height: 100%;
+    margin-bottom: 0%;
+    vertical-align: middle;
+    width: 100%;
+    margin-left: 0%;
+    font-size: 14px;
+	x:32px;
+	y:0px;
+	color: #ffffff;
+	text-shadow: 0px 0px 2px 2.0 #000000;
+}
+
+#CurrentHealth
+{
+    height: 100%;
+    margin-bottom: 0%;
+    vertical-align: middle;
+    margin-top: 6px;
+    width: 100%;
+    margin-left: 0%;
+    font-size: 14px;
+	x:32px;
+	y:0px;
+	color: #ffffff;
+	text-shadow: 0px 0px 2px 2.0 #000000;
+}
+
+.attributeText
+{
+	vertical-align: top;
+	horizontal-align: left;
+	font-size: 20px;
+	color:white;
+	margin-top:0%;
+	margin-left:10%;
+}
+
+#heroAttributes{
+	flow-children: down;
+	height: 100%;
+	width: 100%;
+	margin-top : 20px;
+	horizontal-align: left;
+	vertical-align: middle;
+	margin-left: 0px;
+}

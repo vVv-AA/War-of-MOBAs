@@ -1,0 +1,64 @@
+//#=========================================#
+//#				Spells Pending				#
+//#=========================================#
+
+"npc_dota_hero_poseidon"
+	{
+		"override_hero"		"npc_dota_hero_slardar"
+		"Model"		"models/heroes/slardar/slardar.vmdl"
+		"Portrait"		"vgui/hud/heroportraits/portrait_slardar"
+		"IdleExpression"		"scenes/slardar/slardar_exp_idle_01.vcd"
+		"SoundSet"		"Hero_Slardar"
+		"Enabled"		"1"
+		"Team"		"Bad"
+		"ModelScale"		"0.880000"
+		"HeroGlowColor"		"78 127 208"
+		"PickSound"		"slardar_slar_spawn_01"
+		"BanSound"		"slardar_slar_anger_04"
+		"Legs"	"0"
+		"url"		"Slardar"
+		"LastHitChallengeRival"		"npc_dota_hero_tidehunter"
+		"HeroSelectSoundEffect"		"Hero_Slardar.Pick"
+		"Ability1"		"gush_datadriven"
+		"Ability2"		"whirlpool_datadriven"
+		"Ability3"		"slardar_bash"
+		"Ability4"		"slardar_amplify_damage"
+		"ArmorPhysical"		"3"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackRange"			"650"
+		"AttackDamageMin"		"30"
+		"AttackDamageMax"		"38"
+		"AttackRate"		"1.700000"
+		"AttackAnimationPoint"		"0.360000"
+		"AttackAcquisitionRange"		"800"
+		"ProjectileModel"		"particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+		"ProjectileSpeed"		"1250"
+		"MovementSpeed"			"290"
+		"MovementTurnRate"		"0.500000"
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"21"
+		"AttributeStrengthGain"		"2.800000"
+		"AttributeBaseIntelligence"		"15"
+		"AttributeIntelligenceGain"		"1.500000"
+		"AttributeBaseAgility"		"17"
+		"AttributeAgilityGain"		"2.400000"
+		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"		"140"
+		"VoiceFile"		"soundevents/voscripts/game_sounds_vo_slardar.vsndevts"
+		"particle_folder"		"particles/units/heroes/hero_slardar"
+		"GameSoundsFile"		"soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+		"RenderablePortrait"
+		{
+			"Particles"
+			{
+				"particles/units/heroes/hero_slardar/slardar_loadout.vpcf"
+				{
+					"0"
+					{
+						"type"		"follow_origin"
+						"location"		"attach_hitloc"
+					}
+				}
+			}
+		}
+	}

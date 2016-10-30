@@ -1,0 +1,221 @@
+"sweeping_strike_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"			"antimage_mana_break"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+		"particle"			"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_phantom_strike_end_dash.vpcf"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+		"soundfile"			"soundevents/voscripts/game_sounds_vo_antimage.vsndevts"
+		"particle"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+		"particle"			"particles/econ/items/legion/legion_fallen/legion_fallen_press_buff.vpcf"
+	}
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0 0 0 0"
+
+	// Time
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"8.0 8.0 8.0 8.0"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+
+	"AbilityDamage"				 "70 80 90 100"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityModifierSupportValue"	"0.25"	// mostly about the blink
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"speed"					"3000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"125"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_range"			"750 750 850 850"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"burn_damage"			"2 4 8 10"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"burn_radius"			"240"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"antimage_anti_cast_01"
+			"Target"		"CASTER"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"		"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_phantom_strike_end_dash.vpcf"
+			"EffectAttachType"	"start_at_customorigin"
+
+			"ControlPointEntities"
+			{
+				"CASTER"	"attach_origin"
+			}
+
+			"ControlPoints"
+			{
+				"01"	"POINT"
+			}
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/betrayer/sweep.lua"
+			"Function"		"Sweep"
+			"Target"		"POINT"
+			"modifier"		"modifier_sweeping_strike_datadriven"
+		}
+
+		"ApplyMotionController"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags"		 "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
+			"ScriptFile"		"heroes/betrayer/sweep.lua"
+			"HorizontalControlFunction" "SweepMotion"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_permanent_immolation"
+		{
+			"Passive"			"1"
+			"IsHidden"			"0"
+			"IsDebuff"			"0"
+			"TextureName"		"permanent_immolation"
+
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"				"TARGET"
+					"EffectName"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+					"EffectAttachType"		"start_at_customorigin"
+					"ControlPointEntities"
+					{
+						"TARGET"			"attach_hitloc"
+						"TARGET"			"attach_hitloc"
+					}
+				}
+			}
+
+			"ThinkInterval"  "0.25"
+			"OnIntervalThink"
+			{
+				"ActOnTargets"
+				{
+					"Target"
+					{
+						"Center"  	"TARGET"
+						"Radius" 	"%burn_radius"
+						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+
+					"Action"
+					{
+						"Damage"
+						{
+							"Target"		"TARGET"
+							"Type"			"DAMAGE_TYPE_MAGICAL"
+							"Damage"		"%burn_damage"
+						}
+					}
+				}
+			}
+		}
+
+		"modifier_bonus_damage"
+		{
+			"IsPurgable"		"1"
+			"IsBuff"			"1"
+			"IsHidden"			"0"
+			"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+			"Duration"		"4"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"			"35"
+			}
+		}
+
+		"modifier_bonus_damage_greater"
+		{
+			"IsPurgable"		"1"
+			"IsBuff"			"1"
+			"IsHidden"			"0"
+
+			"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+			"Duration"		"4"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"			"125"
+			}
+		}
+
+		"modifier_bonus_damage_greatest"
+		{
+			"IsPurgable"		"1"
+			"IsBuff"			"1"
+			"IsHidden"			"0"
+
+			"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+			"Duration"		"4"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"			"75"
+			}
+		}
+
+		"modifier_sweeping_strike_datadriven"
+		{
+			"IsHidden"	"1"
+
+			"EffectName"		"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_phantom_strike_end_dash.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

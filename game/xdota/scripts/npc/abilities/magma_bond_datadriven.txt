@@ -1,0 +1,87 @@
+"magma_bond_datadriven"
+{
+	"BaseClass"					 "ability_datadriven"
+	"AbilityBehavior"			 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"		 "magma_bond"
+
+	"precache"
+	{
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
+		"particle"					"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage"			"50 75 100 125"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"reset_chance"		"15 20 25 30"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"400"
+		}
+		"04"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"burn_duration"		"1"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_reset_listener"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"IsDebuff"			"0"
+			"OnAbilityExecuted"
+			{
+				"DelayedAction"
+				{
+					"Delay"		 "0.03"
+					"Action"
+					{
+						"Random"
+						{
+							"Chance" "%reset_chance"
+							"OnSuccess"
+							{
+								"RunScript"
+								{
+									"ScriptFile"	"heroes/igneous/magma_bond.lua"
+									"Function"		"ResetAbility"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		"modifier_magma_bond_spare"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsBuff"			"1"
+			"IsPurgable"		"0"
+
+			"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+			"OnAbilityExecuted"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/igneous/magma_bond.lua"
+					"Function"		"CastAbility"
+				}
+			}
+		}
+	}
+}

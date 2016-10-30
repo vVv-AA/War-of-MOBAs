@@ -1,0 +1,65 @@
+"lavaling_melting_strike_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"MaxLevel"						"1"
+	"AbilityTextureName"			"forged_spirit_melting_strike"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_removed"			"-3"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"max_armor_removed"		"20"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"10"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_melting_strike_datadriven"
+		{
+			"Passive"		"1"
+			"IsHidden"		"1"
+
+			"OnAttackLanded"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_melting_strike_armor_datadriven"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+
+		"modifier_melting_strike_armor_datadriven"
+		{
+			"IsHidden"		"0"
+			"IsPurgable"	"0"
+			"IsDebuff"		"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor_removed"
+			}
+		}
+	}
+}

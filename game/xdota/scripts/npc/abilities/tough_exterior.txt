@@ -1,0 +1,84 @@
+"tough_exterior"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityTextureName"		"tough_exterior"
+	"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
+	"AbilityCooldown"	 		"20"
+	"RequiredLevel"				"25"
+	"AbilityManaCost"	 		"0"
+	"AbilityDuration"			"10"
+	"AbilityCastPoint"			"0.5"
+	"FightRecapLevel"			"2"
+	"MaxLevel"					"1"
+	"AbilityCastAnimation"		"ACT_DOTA_TELEPORT_END"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityModifierSupportBonus"	"5"
+
+	"precache"
+	{
+		"particle"  "particles/econ/items/medusa/medusa_daughters/medusa_daughters_mana_shield_shell.vpcf"
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration"			"10.0"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"incoming_damage_pct"	"-75"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"beastmaster_beas_immort_02"
+			"Target" 		"CASTER"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_shield_datadriven"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_shield_datadriven"
+		{
+			"IsBuff"	"1"
+
+			"EffectName"		"particles/econ/items/medusa/medusa_daughters/medusa_daughters_mana_shield_shell.vpcf"
+			"EffectAttachType"	"attach_hitloc"
+			
+			"OnTakeDamage"
+			{
+				"FireEffect"
+				{
+					"EffectName"        "particles/econ/items/medusa/medusa_daughters/medusa_daughters_mana_shield_shell_impact_c.vpcf"
+					"EffectAttachType"  "attach_hitloc"
+					"Target"            "TARGET"
+				}
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "%incoming_damage_pct"
+			}
+		}
+	}
+}

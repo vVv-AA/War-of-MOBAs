@@ -1,0 +1,34 @@
+"AddonInfo"
+{
+  "TeamCount" "2"
+  "maps"      "dota"
+  "maps"      "xdota"
+
+  "IsPlayable"  "1"
+
+  "dota"
+  {
+          "MaxPlayers"                    "10"
+  }
+  
+  "xdota"
+  {
+          "MaxPlayers"                    "10"
+  }
+  "Default_Keys"
+  {
+    "01"
+    {
+        "Key"       "G"
+        "Command"   "+GWasPressed"
+        "Name"      "Spell Cast G"
+    }
+
+    "02"
+    {
+        "Key"       "T"
+        "Command"   "+TWasPressed"
+        "Name"      "Spell Cast T"
+    }
+  }
+}  

@@ -1,0 +1,158 @@
+"oracle_telekinesis_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"			 		"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityTextureName"		"oracle_telekinesis"
+
+	"AbilityCooldown"	 		"15"
+	"AbilityManaCost"	 		"300"
+	"AbilityChannelTime"		"3"
+	"AbilityCastPoint"			"0.3"
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+
+	"precache"
+	{
+		"particle"		"particles/units/heroes/hero_antimage/antimage_blink_end.vpcf"
+		"particle"		"particles/units/heroes/hero_antimage/antimage_blink_start.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"450"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration"			"3"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"pull_in_time"		"0.3"
+		}
+		"04"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"orbit_radius"		"300"
+		}
+		"05"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"pull_speed"		"700"
+		}
+		"06"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"turn_rate"			"150"
+		}
+	}
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_channeling_oracle_telekinesis"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
+			"Duration"		"%duration"
+		}
+	}
+
+	"OnChannelFinish"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"	"modifier_channeling_oracle_telekinesis"
+			"Target" 		"CASTER"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_channeling_oracle_telekinesis"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"0"
+			"OverrideAnimation"		"ACT_DOTA_TELEPORT"
+			"Aura"					"modifier_oracle_telekinesis_lift"
+			"Aura_Radius"			"%radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/oracle/oracle_telekinesis.lua"
+					"Function"		"PullInOrbit"
+				}
+			}
+
+			"ThinkInterval"  "0.03"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/oracle/oracle_telekinesis.lua"
+					"Function"		"ThinkOrbit"
+				}
+			}
+		}
+
+		"modifier_oracle_telekinesis_lift"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+			"IsPurgable"		"0"
+			"Duration"			"%duration"
+			"EffectName"		"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_force_gold.vpcf"
+			
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"	"particles/econ/events/ti5/blink_dagger_start_ti5.vpcf"
+					"Target"		"TARGET"
+					"EffectAttachType"	"attach_hitloc"
+				}
+		
+				"AttachEffect"
+				{
+					"EffectName"	"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_force_rings_gold.vpcf"
+					"Target"		"TARGET"
+					"EffectAttachType"	"attach_hitloc"
+				}
+		
+				"FireSound"
+				{
+					"EffectName"	"Hero_Antimage.Blink_out"
+					"Target"		"TARGET"
+				}
+
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/oracle/oracle_telekinesis.lua"
+					"Function"		"AddNewUnit"
+				}
+			}
+			"OverrideAnimation"     "ACT_DOTA_FLAIL"
+
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_FLYING"			"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

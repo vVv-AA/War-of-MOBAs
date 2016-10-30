@@ -1,0 +1,25 @@
+"raven_form_vision_extension"
+{
+	"BaseClass"       "ability_lua"
+	"ScriptFile"      "heroes/oracle/raven_form_vision_extension.lua"
+	"AbilityTextureName"	"raven_extra_vision"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"AbilityCooldown"		"20"
+	"AbilityManaCost"		"0"
+	"AbilityDuration"		"5"
+	"MaxLevel"				"1"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bonus_vison_pct"			"25"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"active_bonus_vison_pct"	"200"
+		}
+	}
+}

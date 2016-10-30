@@ -1,0 +1,68 @@
+//#=========================================#
+//#					Remove					#
+//#=========================================#
+
+"npc_dota_hero_old_naix"
+    {
+        "override_hero"     "npc_dota_hero_life_stealer"
+        "Model"     "models/heroes/life_stealer/life_stealer.vmdl"
+        "Portrait"      "vgui/hud/heroportraits/portrait_life_stealer"
+        "IdleExpression"        "scenes/life_stealer/life_stealer_exp_idle_01.vcd"
+        "SoundSet"      "Hero_LifeStealer"
+        "Enabled"       "1"
+        "Role"          "Carry,Durable,Jungler,Escape,Disabler"
+        "Rolelevels"    "2,2,1,1,1"
+        "Team"      "Bad"
+        "ModelScale"        "0.810000"
+        "HeroGlowColor"     "209 4 1"
+        "PickSound"     "life_stealer_lifest_spawn_01"
+        "url"       "Lifestealer"
+        "HeroSelectSoundEffect"     "Hero_LifeStealer.Pick"
+        "AbilityLayout"     "7"
+        "Ability1"      "feast_old_naix_datadriven"
+        "Ability2"      "poison_sting_old_naix_datadriven"
+        "Ability3"      "anabolic_frenzy_old_naix_datadriven"
+        "Ability4"      "rage_old_naix_datadriven"
+        "Ability5"      "xdota_empty"
+        "Ability6"      "xdota_empty"
+        "Ability7"      "xdota_empty"
+    "Ability8"      "attribute_bonus"
+
+        "ArmorPhysical"     "-1"
+        "AttackCapabilities"        "DOTA_UNIT_CAP_MELEE_ATTACK"
+        "AttackDamageMin"       "32"
+        "AttackDamageMax"       "42"
+        "AttackRate"        "1.850000"
+        "AttackAnimationPoint"      "0.390000"
+        "AttackAcquisitionRange"        "600"
+        "AttackRange"       "150"
+        "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
+        "AttributeBaseStrength"     "25"
+        "AttributeStrengthGain"     "3.000000"
+        "AttributeBaseIntelligence"     "15"
+        "AttributeIntelligenceGain"     "1.75000"
+        "AttributeBaseAgility"      "18"
+        "AttributeAgilityGain"      "1.900000"
+        "MovementSpeed"     "315"
+        "MovementTurnRate"      "1.000000"
+        "HasAggressiveStance"       "1"
+        "BoundsHullName"        "DOTA_HULL_SIZE_HERO"
+        "HealthBarOffset"       "130"
+        "VoiceFile"     "soundevents/voscripts/game_sounds_vo_life_stealer.vsndevts"
+        "particle_folder"       "particles/units/heroes/hero_life_stealer"
+        "GameSoundsFile"        "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+        "RenderablePortrait"
+        {
+            "Particles"
+            {
+                "particles/units/heroes/hero_life_stealer/life_stealer_loadout.vpcf"
+                {
+                    "0"
+                    {
+                        "type"      "follow_origin"
+                        "location"      "attach_hitloc"
+                    }
+                }
+            }
+        }
+    }

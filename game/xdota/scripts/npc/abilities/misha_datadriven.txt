@@ -1,0 +1,138 @@
+"misha_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"					"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"DisplayAdditionalHeroes"	"1"
+	"AbilityTextureName"		"lone_druid_spirit_bear"
+	"MaxLevel"					"3"
+	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.5 0.5 0.5"
+
+	// Time
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"15 25 30"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"75 75 75"
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_lone_druid/lone_druid_spirit_bear_death.vpcf"
+		"particle"	"particles/units/heroes/hero_lone_druid/lone_druid_bear_spawn.vpcf"
+		"particle"	"particles/status_fx/status_effect_spirit_bear.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+		"model"		"models/heroes/lone_druid/spirit_bear.vmdl"
+		"soundfile"	"soundevents/voscripts/game_sounds_vo_beastmaster.vsndevts"
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		// This Values are mostly for tooltips, the unit stats are not affected
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bear_hp"					"1600 2300 2700"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bear_regen_tooltip"		"3 4 5"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"bear_bat"					"1.65 1.55 1.45"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bear_armor"				"4 5 6"
+		}
+	}
+
+	"OnUpgrade"
+	{
+		"RunScript"
+	    {
+	        "ScriptFile"    "heroes/beast_master/spirit_bear.lua"
+	        "Function"      "SpiritBearLevel"
+	    }
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+	    {
+	        "ScriptFile"    "heroes/beast_master/spirit_bear.lua"
+	        "Function"      "SpiritBearSpawn"
+	        "unit_name"		"npc_dota_misha"
+	    }
+
+	    "FireSound"
+	    {
+	    	"EffectName"	"beastmaster_beas_ability_callwild_03"
+	    	"Target" 		"CASTER"
+	    }
+
+	    "FireSound"
+	    {
+	    	"EffectName"	"Hero_LoneDruid.SpiritBear.Cast"
+	    	"Target"		"CASTER"
+	    }
+	}
+
+	"Modifiers"
+	{
+		"modifier_spirit_bear"
+		{
+			"IsHidden"		"1"
+
+			"StatusEffectName"		"particles/status_fx/status_effect_spirit_bear.vpcf"
+			"StatusEffectPriority"	"1"
+
+			"OnCreated"
+			{
+				"FireEffect"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"particles/units/heroes/hero_lone_druid/lone_druid_bear_spawn.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+			}
+
+			"OnDeath"
+			{
+				"FireEffect"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"particles/units/heroes/hero_lone_druid/lone_druid_spirit_bear_death.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+			}
+		}
+
+		"modifier_charge_thinker"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"IsDebuff"			"0"
+
+			"ThinkInterval"  "0.03"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/beast_master/spirit_bear.lua"
+					"Function"		"StartCooling"
+				}
+			}
+		}
+	}
+}

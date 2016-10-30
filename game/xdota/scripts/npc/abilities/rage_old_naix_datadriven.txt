@@ -1,0 +1,96 @@
+"rage_old_naix_datadriven"
+{
+	"BaseClass"			 		"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+	"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
+	"AbilityTextureName"		"old_naix_rage"
+	"AbilityManaCost"			"75 100 150"
+	"AbilityCooldown"			"90 60 30"
+
+    "precache"
+    {
+        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+        "particle"          "particles/units/heroes/hero_life_stealer/life_stealer_rage.vpcf"
+        "particle"          "particles/status_fx/status_effect_life_stealer_rage.vpcf"
+    }
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"bonus_attack_speed"			"10 15 20"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"duration"			"10 15 20"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+        {
+            "EffectName"    "Hero_LifeStealer.Rage"
+            "Target"        "CASTER"
+        }
+
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/naix/rage.lua"
+			"Function"		"Purge"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_rage_naix"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
+			"Duration"		"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_rage_naix"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"0"
+			"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+            "StatusEffectName"         "particles/status_fx/status_effect_life_stealer_rage.vpcf"
+            "StatusEffectPriority"  "10"
+
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "EffectName"        "particles/units/heroes/hero_life_stealer/life_stealer_rage.vpcf"
+                    "EffectAttachType"  "attach_hitloc"
+                    "Target"            "CASTER"
+                    "ControlPointEntities"
+                    {
+                        "CASTER"    "attach_hitloc"
+                        "CASTER"    "attach_hitloc"
+                        "CASTER"    "attach_hitloc"
+                    }
+                }
+            }
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

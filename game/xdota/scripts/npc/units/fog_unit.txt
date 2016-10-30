@@ -1,0 +1,14 @@
+"fog_unit"
+    {
+        "BaseClass"                 "npc_dota_creature"
+      "Model"                     "models/development/invisiblebox.vmdl"
+    //    "Model"                     "models/heroes/juggernaut/juggernaut.vmdl"
+        "Level"                     "1"
+        "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+        "VisionDaytimeRange"        "0" 
+        "VisionNighttimeRange"      "0"
+        "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+        "AbilityLayout"             "1"
+        "Ability1"                  "dummy_passive"
+    }

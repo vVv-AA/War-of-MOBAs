@@ -1,0 +1,196 @@
+"wild_charge_misha_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"			"wild_charge"
+	"MaxLevel"					"3"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+		"soundfile"			"sounds/weapons/hero/lone_druid/spirit_bear_preattack03.vsnd"
+		"particle"			"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_phantom_strike_end_dash.vpcf"
+		"particle"  		"particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle_body.vpcf"
+	}
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0 0 0 0"
+	"AbilityCastRange"				"750 750 850"
+
+	// Time
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"10 10 10"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"40"
+
+	"AbilityDamage"				 	"140 160 180"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityModifierSupportValue"	"0.25"	// mostly about the blink
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"speed"					"3000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"125"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_range"			"750 750 850"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"stun_duration"			"1.5"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_magic_resis"		"50"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"resistance_duration"	"5"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cooldown_reduction"	"1.5"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"Random"
+		{
+			"Chance"			"50"
+			"OnSuccess"
+			{
+				"FireSound"
+				{
+					"EffectName"	"beastmaster_beas_ability_summonsboar_04"
+					"Target" 		"CASTER"
+				}
+			}
+
+			"OnFailure"
+			{
+				"FireSound"
+				{
+					"EffectName"	"beastmaster_beas_ability_summonsboar_05"
+					"Target" 		"CASTER"
+				}
+			}
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_FacelessVoid.TimeWalk"
+			"Target"		"CASTER"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"LoneDruid_SpiritBear.PreAttack"
+			"Target" 		"CASTER"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"		"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_phantom_strike_end_dash.vpcf"
+			"EffectAttachType"	"start_at_customorigin"
+
+			"ControlPointEntities"
+			{
+				"CASTER"	"attach_origin"
+			}
+
+			"ControlPoints"
+			{
+				"01"	"POINT"
+			}
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/beast_master/misha_charge.lua"
+			"Function"		"Charge"
+			"Target"		"POINT"
+			"modifier"		"modifier_invulnerable_datadriven"
+		}
+
+		"ApplyMotionController"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags"		 "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
+			"ScriptFile"		"heroes/beast_master/misha_charge.lua"
+			"HorizontalControlFunction" "ChargeMotion"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_invulnerable_datadriven"
+		{
+			"IsHidden"	"1"
+
+			"EffectName"		"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_phantom_strike_end_dash.vpcf"
+			"EffectAttachType"	"follow_origin"
+
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+
+		"modifier_magic_reduction"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"0"
+			"Duration"			"%resistance_duration"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%bonus_magic_resis"
+			}
+		}
+
+		"modifier_charge_cooldown_reduction"
+		{
+			"Passive"		 "1"
+			"IsHidden"			"1"
+
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"heroes/beast_master/misha_charge.lua"
+					"Function"				"CooldownReducton"
+				}
+			}
+		}
+	}
+}

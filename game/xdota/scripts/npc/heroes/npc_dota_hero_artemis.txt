@@ -1,0 +1,72 @@
+//#=========================================#
+//#					DONE					#
+//#=========================================#
+
+"npc_dota_hero_artemis"
+{
+	"override_hero"	"npc_dota_hero_windrunner"
+	"Model"		"models/heroes/windrunner/windrunner.vmdl"
+	"Portrait"		"vgui/hud/heroportraits/portrait_windrunner"
+	"IdleExpression"		"scenes/windrunner/windrunner_exp_idle_01.vcd"
+	"SoundSet"		"Hero_Windrunner"
+	"PickSound"		"windrunner_wind_spawn_01"
+	"BanSound"		"windrunner_wind_anger_01"
+	"Enabled"		"1"
+	"HeroPool1"		"1"
+	"HeroUnlockOrder"		"2"
+	"Role"			"Carry,Support,Disabler,Escape,Nuker"
+	"Rolelevels"	"1,1,1,1,1"
+	"Team"		"Good"
+	"BotImplemented"		"1"
+	"ModelScale"		"0.980000"
+	"LoadoutScale"		"1.100000"
+	"HeroGlowColor"		"185 220 20"
+	"CMEnabled"		"1"
+	"NameAliases"		"wr"
+	"url"		"Windranger"
+	"LastHitChallengeRival"		"npc_dota_hero_drow_ranger"
+	"HeroSelectSoundEffect"		"Hero_Windrunner.Pick"
+        "Ability1"      "aimed_shot_datadriven"
+        "Ability2"      "shadow_in_the_shadows_datadriven"
+        "Ability3"      "proprioception_datadriven"
+        "Ability4"      "marksmanship_datadriven"
+    "Ability5"      "attribute_bonus"
+	"ArmorPhysical"		"-1"
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin"		"22"
+	"AttackDamageMax"		"34"
+	"AttackRate"		"1.500000"
+	"AttackAnimationPoint"		"0.400000"
+	"AttackAcquisitionRange"		"800"
+	"AttackRange"		"600"
+	"ProjectileModel"		"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
+	"ProjectileSpeed"		"1250"
+	"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributeBaseStrength"		"15"
+	"AttributeStrengthGain"		"2.500000"
+	"AttributeBaseIntelligence"		"22"
+	"AttributeIntelligenceGain"		"2.600000"
+	"AttributeBaseAgility"		"17"
+	"AttributeAgilityGain"		"1.400000"
+	"BoundsHullName"		"DOTA_HULL_SIZE_HERO"
+	"HealthBarOffset"		"160"
+	"MovementSpeed"		"295"
+	"MovementTurnRate"		"0.600000"
+	"particle_folder"		"particles/units/heroes/hero_windrunner"
+	"GameSoundsFile"		"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+	"VoiceFile"		"soundevents/voscripts/game_sounds_vo_windrunner.vsndevts"
+	"RenderablePortrait"
+	{
+		"Particles"
+		{
+			"particles/units/heroes/hero_windrunner/windrunner_loadout.vpcf"
+			{
+				"0"
+				{
+					"type"		"follow_origin"
+					"location"		"attach_hitloc"
+				}
+			}
+		}
+	}
+}

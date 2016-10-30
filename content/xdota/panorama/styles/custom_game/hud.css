@@ -1,0 +1,21 @@
+#ZooHUD
+{
+	width: 1920px;
+	height: 1080px;
+    //This is to move the UI up so we can do comparisons, remove in final product
+    padding-bottom: 0px;
+    padding-right: 0px;
+}
+
+.hudpanel:hover
+{
+    pre-transform-scale2d: 1;
+}
+
+.hudpanel
+{
+    width: 100% !important;
+    height: 28% !important;
+    overflow: noclip;
+    pre-transform-scale2d: 1;
+}

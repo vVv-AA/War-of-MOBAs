@@ -1,0 +1,79 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/action_bar.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/action_bar.js" />
+	</scripts>
+
+	<Panel class="hudpanel" hittest="false">
+		<Image id="MinimapBorder" hittest="false" src="raw://resource/flash3/images/hud_skins/default/actionpanel/minimapborder.png">
+		</Image>
+        <Image id="MinimapSpacer" src="raw://resource/flash3/images/hud_skins/default/actionpanel/spacer_16_9.png" />
+        <Image class="hud" id="PortraitBorder" hittest="false" src="raw://resource/flash3/images/hud_skins/default/actionpanel/portrait_wide.png">
+            <Label id="HeroName" text="" />
+            <Panel id="LevelTextBox">
+                <Label id="LevelNumber" text="" />
+            </Panel>
+            <Panel id="XPBar" />
+            <Label id="XPLabel" text="" />
+        </Image>
+        <DOTAHeroMovie class="hud" id="Portrait" />
+
+		<Image class="hud" id="center_left_wide" src="raw://resource/flash3/images/hud_skins/default/actionpanel/center_left_wide.png">
+            <Panel class="BlackBox" id="LeftStatsBox">
+				<Panel id="heroAttributes" onactivate="upAttributes()"> 
+					<Label id="attributeDamageText" class="attributeText" text=""/>
+					<Label id="attributeAttackSpeedText" class="attributeText" text=""/>
+					<Label id="attributeMoveSpeedText" class="attributeText" text=""/>
+				</Panel>
+
+			</Panel>
+            <Panel class="BlackBox" id="RightStatsBox">
+				<Panel id="heroAttributes" onactivate="upAttributes()"> 
+					<Label id="attributeArmorText" class="attributeText" text=""/>
+					<Label id="attributeMagicResistance" class="attributeText" text=""/>
+					<Label id="attributeStrText" class="attributeText" text=""/>
+					<Label id="attributeAgiText" class="attributeText" text=""/>
+					<Label id="attributeIntText" class="attributeText" text=""/>
+				</Panel>
+			</Panel>
+        </Image>
+        <Image id="center_right" src="raw://resource/flash3/images/hud_skins/default/actionpanel/center_right.png">
+			<Panel class="AbilityOverlayRoot">
+				<Button id="LevelUpButton" onactivate="OnLevelUpClicked()">
+					<Panel id="LevelUpButtonInset">
+						<Label text="# +" />
+					</Panel>
+				</Button>
+
+				<Panel id = "ability_list_container">
+					<Panel id="ability_list1">
+					</Panel>
+					<Panel id="ability_list2">
+					</Panel>
+				</Panel>
+			</Panel>
+        </Image>
+		<Panel id="HealthManaBarHolder">
+			<Panel id="HealthBar">
+				<Panel id="HealthBarInner">
+					<Panel id="HealthBarLight" />
+					<Label id="CurrentHealth" />
+				</Panel>
+				<Panel id="HealthBarGlow" />
+			</Panel>
+			<!-- Mana bar -->
+			<Panel id="ManaBar">
+				<Panel id="ManaBarInner">
+					<Panel id="ManaBarLight" />
+					<Label id="CurrentMana" />
+				</Panel>
+				<Panel id="ManaBarGlow" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
+

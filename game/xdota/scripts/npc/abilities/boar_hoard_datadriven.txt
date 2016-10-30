@@ -1,0 +1,182 @@
+"boar_hoard_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"			"boar_hoard"
+	"MaxLevel"						"3"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"300"
+	"AbilityCastPoint"				"0.53 0.53 0.53"
+
+	// Time
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"35.0 35.0 35.0"
+
+	// Damage.
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityDamage"					"24 32 40"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"150 165 180"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600 600 600"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"collision_radius"		"120 120 120"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"splash_radius"			"150 150 150"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"4.0 4.0 4.0"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"speed"					"750 750 750"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"boars_per_sec"			"125"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"distance"				"3000"
+		}
+		"08"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_pct"				"-20 -40 -60"
+		}
+		"09"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_duration"			"4"
+		}
+	}
+
+	// Data driven
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+		"particle"					"particles/test_particle/boar_hoard.vpcf"
+	}
+
+	"OnUpgrade"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"heroes/beast_master/boar_hoard.lua"
+			"Function"				"RemoveOtherUlt"
+		}
+	}
+
+	"OnAbilityPhaseStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"beastmaster_beas_ability_summonsboar_06"
+			"Target" 		"CASTER"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"Target"				"POINT"
+			"EffectName"			"Hero_Tinker.March_of_the_Machines"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"			"heroes/beast_master/boar_hoard.lua"
+			"Function"				"boar_hoard_spawn"
+			"Target"				"POINT"
+		}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"					"1"
+
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"			"TARGET"
+				"Radius"			"%splash_radius"
+				"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+
+			"Action"
+			{
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Damage"		"%AbilityDamage"
+					"Type"			"DAMAGE_TYPE_MAGICAL"
+				}
+
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_boar_slow"
+					"Target" 		"TARGET"
+					"Duration"		"%slow_duration"
+				}
+			}
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_boar_slow"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"0"
+
+			"Properties"
+			{
+			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%slow_pct"
+			}
+		}
+
+		"modifier_board_hoard_dummy_datadriven"
+		{
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"					"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR"					"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"				"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NOT_ON_MINIMAP"					"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_UNSELECTABLE"					"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_FLYING"							"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

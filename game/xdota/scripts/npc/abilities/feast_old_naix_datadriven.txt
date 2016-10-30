@@ -1,0 +1,52 @@
+"feast_old_naix_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"			 		"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"		"old_naix_feast"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"lifesteal"				 	"20 25 30 40"
+		}
+	}
+
+	"Modifiers"
+	{
+
+		"lifesteal_trigger"
+		{
+			"Passive"		 "1"
+			"IsHidden"			"1"
+
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"heroes/naix/feast.lua"
+					"Function"				"ApplyLifeSteal"
+				}
+			}
+		}
+
+		"modifier_feast_lifesteal"
+		{
+			"IsHidden"		"1"
+
+			"OnDealDamage"
+			{
+				"Lifesteal"
+				{
+					"Target"			"ATTACKER"
+					"LifestealPercent"	"%lifesteal"
+				}
+			}
+		}
+	}
+}

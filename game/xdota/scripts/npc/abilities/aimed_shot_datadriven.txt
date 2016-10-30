@@ -1,0 +1,123 @@
+"aimed_shot_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"					"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ATTACK"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"		"drow_ranger_frost_arrows"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"725"
+	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+
+	// Time
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"			 "0.0 0.0 0.0 0.0"
+	"AbilityDuration"			 "1.5 1.5 1.5 1.5"
+
+	// Damage.
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityDamage"				 "0 0 0 0"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"			 "12 12 12 12"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"damage" 						"10 20 30 40"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"bonus_range" 					"150"
+		}
+	}
+
+	// Data driven
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"			 "soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+		"particle"				"particles/units/heroes/hero_drow/drow_frost_arrow.vpcf"
+		"particle"				"particles/items2_fx/sange_maim.vpcf"
+	}
+
+	"Modifiers"
+	{
+		"modifier_frost_arrows_caster_datadriven"
+		{
+			"Passive"									 "1"
+			"IsHidden"						"1"
+			"IsPurgable"					"0"
+
+			"Orb"
+			{
+				"Priority"					"DOTA_ORB_PRIORITY_ABILITY"
+				"ProjectileName"			"particles/units/heroes/hero_drow/drow_frost_arrow.vpcf"
+				"CastAttack"				"1"
+			}
+
+			"OnOrbFire"
+			{
+				"SpendMana"
+				{
+					"Mana"					"%AbilityManaCost"
+				}
+				"FireSound"
+				{
+					"EffectName"			"Hero_DrowRanger.FrostArrows"
+					"Target"				"CASTER"
+				}
+			}
+
+			"OnOrbImpact"
+			{
+				"ApplyModifier"
+				{
+					"Target"
+					{
+						"Center"		"TARGET"
+						"Types"		 "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+					"ModifierName"	"EffectModifier"
+				}
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Type"			"DAMAGE_TYPE_PHYSICAL"
+					"Damage"		"%damage"
+				}
+			}
+		}
+
+		"EffectModifier"
+		{
+			"IsHidden"	"0"
+			"Duration"	"1"
+			"EffectName"						"particles/items2_fx/sange_maim.vpcf"
+			"EffectAttachType"			"PATTACH_ABSORIGIN"
+		}
+
+		"bonus_range_mod"
+		{
+			"Passive"		 "1"
+			"IsPurgable"		"0"
+			"IsHidden"			"1"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%bonus_range"
+			}
+		}
+	}
+}

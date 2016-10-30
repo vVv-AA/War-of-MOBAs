@@ -1,0 +1,40 @@
+"unbreakable_fortitude"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"unbreakable_fortitude"
+
+	"precache"
+	{
+		"particle" "particles/status_fx/status_effect_arc_warden_tempest.vpcf"
+	}
+
+	"Modifiers"
+	{
+		"modifier_death_thinker"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"IsDebuff"			"0"
+			"Attributes"    "MODIFIER_ATTRIBUTE_PERMANENT"
+
+			"OnRespawn"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/omniknight/unbreakable_fortitude.lua"
+					"Function"		"DestoryIllusion"
+				}
+			}
+
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/omniknight/unbreakable_fortitude.lua"
+					"Function"		"SpawnIllusion"
+				}
+			}
+		}
+	}
+}

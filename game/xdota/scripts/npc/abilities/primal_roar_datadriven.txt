@@ -1,0 +1,86 @@
+"primal_roar_datadriven"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"			 		"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityTextureName"		"primal_roar"
+	"MaxLevel"					"3"
+	"AbilityCooldown"	 		"50"
+	"AbilityManaCost"	 		"100 100 100"
+	"AbilityDuration"			"5 8 12"
+	"AbilityCastPoint"			"0.5 0.5 0.5"
+	"FightRecapLevel"			"1"
+
+	"precache"
+	{
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+		"soundfile"				"soundevents/voscripts/game_sounds_vo_lone_druid.vsndevts"
+		"particle"  			"particles/units/heroes/hero_lone_druid/lone_druid_savage_roar.vpcf"
+		"particle"  			"particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"bonus_damage_pct"	"75 100 150"
+		}
+		"02"
+		{
+			"var_type"		"FIELD_FLOAT"
+			"duration"		"3.0 4.0 5.0"
+		}
+	}
+
+	"OnUpgrade"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"heroes/beast_master/primal_roar.lua"
+			"Function"				"RemoveOtherUlt"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/beast_master/primal_roar.lua"
+			"Function"		"RemoveParticles"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/beast_master/primal_roar.lua"
+			"Function"		"ApplyMods"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_roar_bonus_base_damage"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"0"
+			"Duration"			"%duration"
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/beast_master/primal_roar.lua"
+					"Function"		"RemoveParticles"
+				}
+			}
+
+			"Properties"
+			{
+			    "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%bonus_damage_pct"
+			}
+		}
+	}
+}

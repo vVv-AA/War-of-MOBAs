@@ -1,0 +1,74 @@
+"proprioception_datadriven"
+{
+	"BaseClass"			 "ability_datadriven"
+	"AbilityBehavior"			 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"proprioception"
+	"AbilityCastRange"				"%radius"
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"particle"			"particles/custom_particle/spirit_breaker_charge_target_mark.vpcf"
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"					"700 750 800 900"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_sense_datadriven"
+		{
+			"Passive"					 "1"
+			"IsHidden"						"1"
+			"IsPurgable"					"0"
+
+			"Aura"			"modifier_blur_enemy_datadriven"
+			"Aura_Radius"	 "%radius"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
+			"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
+		}
+
+		"modifier_blur_enemy_datadriven"
+		{
+			"IsHidden"						"1"
+			"IsPurgable"					"0"
+
+			"OnCreated"
+			{
+				"RunScript"
+					{
+						"ScriptFile"	"heroes/artemis/marker.lua"
+						"Function"		"ApplyRevelOverhead"
+					}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/artemis/marker.lua"
+					"Function"		"DestroyOverhead"
+				}
+			}
+
+			"ThinkInterval"	"0.03"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/artemis/marker.lua"
+					"Function"		"Update"
+				}
+			}
+		}
+	}
+}
