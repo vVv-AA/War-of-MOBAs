@@ -1,7 +1,7 @@
 function Upgrade( keys )
 	local ability = keys.ability
 	local caster = keys.caster
-	if ability:GetLevel() == 3 then
+	if ability:GetLevel() == 2 then
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_storm_bolt_bonus_damage", {})
 	end
 end
@@ -126,8 +126,6 @@ function UpgradesHandler( keys )
 	if target:IsRealHero() then
 		caster:GiveMana(ability:GetSpecialValueFor("refund_mana"))
 	end
-
-	if ability:GetLevel() < 3 then return end
 
 	if target:IsRealHero() then
 		local mod = caster:FindModifierByName("modifier_storm_bolt_bonus_damage")

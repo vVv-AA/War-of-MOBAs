@@ -1,11 +1,3 @@
-function RemoveOtherUlt( event )
-	local caster = event.caster
-	if caster:HasAbility("primal_roar_datadriven") then
-		caster:SwapAbilities("primal_roar_datadriven", "tough_exterior", false, true)
-		caster:RemoveAbility("primal_roar_datadriven")
-	end
-end
-
 function boar_hoard_spawn( keys )
 	-- Variables
 	local caster = keys.caster
@@ -75,7 +67,6 @@ function boar_hoard_spawn( keys )
 			dummy.march_of_the_machines_num = dummy.march_of_the_machines_num + 1
 
 			-- Check if the number of machines have been reached
-			print(dummy.march_of_the_machines_num)
 			if dummy.march_of_the_machines_num == boars_per_sec * duration then
 				dummy:Destroy()
 				return nil

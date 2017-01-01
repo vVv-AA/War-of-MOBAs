@@ -7,9 +7,9 @@ ATTACHMENTS_VERSION = "1.00"
   -"require" this file inside your code in order to gain access to the Attachments global table.
   -Optionally require "libraries/notifications" before this file so that the Attachment Configuration GUI can display messages via the Notifications library.
   -Ensure that this file is placed in the vscripts/libraries path
-  -Ensure that you have the xdota_attachments.xml, xdota_attachments.js, and xdota_attachments.css files in your panorama content folder to use the GUI.
-  -Ensure that xdota_attachments.xml is included in your custom_ui_manifest.xml with
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/xdota_attachments.xml" />
+  -Ensure that you have the barebones_attachments.xml, barebones_attachments.js, and barebones_attachments.css files in your panorama content folder to use the GUI.
+  -Ensure that barebones_attachments.xml is included in your custom_ui_manifest.xml with
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_attachments.xml" />
   -Finally, include the "attachments.txt" in your scripts directory if you have a pre-build database of attachment settings.
 
   Library Usage

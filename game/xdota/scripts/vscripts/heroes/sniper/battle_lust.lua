@@ -3,7 +3,7 @@ function UpgradesHandler( keys )
 	local ability = keys.ability
 
 	if ability:GetLevel() < 3 then return end
-	local adrenaline_surge_ability = caster:FindAbilityByName("adrenaline_surge")
+	local adrenaline_surge_ability = caster:FindAbilityByName("gun_runner_adrenaline_surge")
 	local duration = adrenaline_surge_ability:GetLevelSpecialValueFor("duration", adrenaline_surge_ability:GetLevel() - 1)
 	adrenaline_surge_ability:ApplyDataDrivenModifier(caster, caster, "modifier_adrenaline_surge", {duration = duration})
 end

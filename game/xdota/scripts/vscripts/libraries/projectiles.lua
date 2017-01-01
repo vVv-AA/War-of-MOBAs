@@ -22,7 +22,7 @@ function Projectiles:start()
     -- = Entities:CreateByClassname("info_target")
     self.thinkEnt = SpawnEntityFromTableSynchronous("info_target", {targetname="projectiles_lua_thinker"})
     --self.treeCutter = CreateUnitByName('npc_dummy_unit', Vector(0,0,0) , true, nil, nil, DOTA_TEAM_NOTEAM)
-    --self.treeCutter:FindAbilityByName("xdota_dummy_unit"):SetLevel(1)
+    --self.treeCutter:FindAbilityByName("reflex_dummy_unit"):SetLevel(1)
     --self.treeCutter:AddAbility("tree_cutter")
     --self.treeCutter:FindAbilityByName("tree_cutter"):SetLevel(1)
     

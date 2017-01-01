@@ -2,8 +2,7 @@
 {
   custom_net_tables =
   [
-  	"containers_lua",
-	"hero_attributes",
-	"creep_attributes",
+    "containers_lua",
+    "selection",
   ]
 }

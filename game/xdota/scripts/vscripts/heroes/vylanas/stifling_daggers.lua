@@ -7,7 +7,8 @@ function ThrowDaggers( keys )
     local target_type_basic = DOTA_UNIT_TARGET_BASIC
     local target_team = DOTA_UNIT_TARGET_TEAM_ENEMY
     local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
-
+    local life_drain_duration = ability:GetSpecialValueFor("life_drain_duration")
+    local projectile_speed = ability:GetSpecialValueFor("projectile_speed")
     local target_heroes = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetCursorPosition(), nil, radius, target_team, target_type_hero + target_type_basic, target_flags, FIND_CLOSEST, false)
 
     local count = 0
@@ -23,13 +24,13 @@ function ThrowDaggers( keys )
 				Target = unit,
 				Source = caster,
 				bHasFrontalCone = false,
-				iMoveSpeed = 1200,
+				iMoveSpeed = projectile_speed,
 				bReplaceExisting = false,
-				bProvidesVision = false,
+				bProvidesVision = true,
                 iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1,
+               	life_drain_duration = life_drain_duration
 			}
 
-			local time_elapsed = 0;
 			TrackingProjectile(projectile_info)
 			ability:ApplyDataDrivenModifier(caster, unit, "modifier_dagger_slow", {})
 		end
@@ -66,20 +67,13 @@ function TrackingProjectile( params )
 
 			if caster.stiflingDaggerTargets ~= nil then
 				if caster.stiflingDaggerTargets[target] ~= nil then
-					ParticleManager:DestroyParticle(caster.stiflingDaggerTargets[target], true)
 					target:RemoveModifierByName("modifier_life_drainer")
-					caster.stiflingDaggerTargets[target] = nil
-					caster.duration[target] = nil
 				end
 			else
 				caster.stiflingDaggerTargets = {}
-				caster.duration = {}
 			end
 
-        	local particleName = "particles/units/heroes/hero_pugna/pugna_life_drain.vpcf"
-        	caster.stiflingDaggerTargets[target] = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, caster)
-			ParticleManager:SetParticleControlEnt(caster.stiflingDaggerTargets[target], 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
-            caster.duration[target] = 5
+            CreateParticles({caster = caster, target = target, ability = ability})
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_life_drainer", {duration = 5})
             ParticleManager:DestroyParticle( particle, true )
             --Stop the timer
@@ -92,29 +86,35 @@ function TrackingProjectile( params )
 end
 
 function LifeDrain( keys )
-	if keys.caster.duration[keys.target] == nil then return end
-	keys.caster.duration[keys.target] = keys.caster.duration[keys.target] - 0.5
-	local lifesteal = keys.ability:GetSpecialValueFor("lifesteal")
-
-	if keys.caster.duration[keys.target] <= 0 or not keys.target:IsAlive() then
-	    ParticleManager:DestroyParticle( keys.caster.stiflingDaggerTargets[keys.target], true )
-	    keys.caster.duration[keys.target] = nil
-	    keys.caster.stiflingDaggerTargets[keys.target] = nil
-	    return
-	end
-
+	local lifesteal = keys.ability:GetLevelSpecialValueFor("life_drain", keys.ability:GetLevel() - 1)
 	local damage_table = {
 		attacker = keys.caster,
 		victim = keys.target,
 		damage_type = DAMAGE_TYPE_PURE,
 		damage = lifesteal,
 	}
+
 	ApplyDamage(damage_table)
-	keys.caster:Heal(lifesteal, keys.caster)
+	keys.caster:Heal(lifesteal, keys.ability)
 end
 
-function DestoryParticles( keys )
-	keys.caster.duration[keys.unit] = 0
-	ParticleManager:DestroyParticle( keys.caster.stiflingDaggerTargets[keys.unit], true )
-	keys.caster.stiflingDaggerTargets[keys.unit] = nil
+function CreateParticles(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+	local target = keys.target
+
+	if caster.stiflingDaggerTargets == nil then
+		caster.stiflingDaggerTargets = {}
+	end
+
+	local particleName = "particles/units/heroes/hero_pugna/pugna_life_drain.vpcf"
+	caster.stiflingDaggerTargets[target] = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControlEnt(caster.stiflingDaggerTargets[target], 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+end
+
+function DestroyParticles( keys )
+	if keys.caster.stiflingDaggerTargets[keys.target] ~= nil then
+		ParticleManager:DestroyParticle( keys.caster.stiflingDaggerTargets[keys.target], true )
+		keys.caster.stiflingDaggerTargets[keys.target] = nil
+	end
 end

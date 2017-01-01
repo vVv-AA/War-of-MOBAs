@@ -31,8 +31,9 @@ function Move( event )
 	loc = loc - (loc - target:GetAbsOrigin()):Normalized() * 120
 
 	if ability.lastVec ~= nil and ability.lastVec == loc then
-		if target:HasModifier("modifier_dance") == false then
-			ability:ApplyDataDrivenModifier(target, target, "modifier_dance", {duration = 10.0})
+		if target:GetModelName() == "models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl" then
+			target:StartGesture(ACT_DOTA_LOADOUT_RARE)
+		else
 			target:StartGesture(ACT_DOTA_IDLE_RARE)
 		end
 		return

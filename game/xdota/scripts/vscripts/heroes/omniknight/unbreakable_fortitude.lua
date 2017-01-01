@@ -2,7 +2,7 @@ LinkLuaModifier( "soul_modifier", "heroes/omniknight/unbreakable_fortitude.lua",
 
 function SpawnIllusion( keys )
 	local caster = keys.unit
-	print(caster.isIllu)
+
 	if (caster.isIllu) then return end
 	local spawn_location = caster:GetOrigin()
 	local duration = keys.caster:GetTimeUntilRespawn()
@@ -12,6 +12,7 @@ function SpawnIllusion( keys )
 	soul_unit:SetPlayerID(caster:GetPlayerID())
 	soul_unit:SetRespawnsDisabled(true)
 	soul_unit:AddNewModifier(caster, ability, "soul_modifier", nil)
+	soul_unit:AddNewModifier(caster, ability, "modifier_disarmed", nil)
 	caster.soul_unit = soul_unit
 	local caster_level = caster:GetLevel()
 	for i = 2, caster_level do
@@ -21,9 +22,14 @@ function SpawnIllusion( keys )
 	for ability_id = 0, 15 do
 		local ability = soul_unit:GetAbilityByIndex(ability_id)
 		if ability then
+			if ability:GetAbilityType() == DOTA_ABILITY_TYPE_ULTIMATE then
+				ability:SetActivated(false)
+			end
 			ability:SetLevel(caster:GetAbilityByIndex(ability_id):GetLevel())
 		end
 	end
+
+	soul_unit:FindAbilityByName("unbreakable_fortitude"):SetActivated(false)
 
 	for item_id = 0, 5 do
 		local item_in_caster = caster:GetItemInSlot(item_id)
@@ -46,12 +52,14 @@ function SpawnIllusion( keys )
 
 	soul_unit:SetHasInventory(false)
 	soul_unit:SetCanSellItems(false)
+
 end
 
 function DestoryIllusion( keys )
 	local caster = keys.caster
 	if not caster.soul_unit:IsNull() and caster.soul_unit ~= nil and caster.soul_unit:IsAlive() then
 		caster:SetAbsOrigin(caster.soul_unit:GetAbsOrigin())
+		caster.soul_unit:RemoveModifierByName("soul_modifier")
 		caster.soul_unit:ForceKill(true)
 		UTIL_Remove(caster.soul_unit)
 		caster.soul_unit = nil
@@ -65,6 +73,7 @@ end
 function soul_modifier:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_SUPER_ILLUSION,
+		MODIFIER_PROPERTY_MIN_HEALTH,
 	}
 end
 
@@ -83,4 +92,12 @@ end
 
 function soul_modifier:GetAttributes()
 	return MODIFIER_ATTRIBUTE_PERMANENT
+end
+
+function soul_modifier:GetModifierSuperIllusion()
+	return true
+end
+
+function soul_modifier:GetMinHealth()
+	return self:GetParent():GetMaxHealth()
 end

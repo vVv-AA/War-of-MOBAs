@@ -1,3 +1,5 @@
+require('mechanics/talents')
+
 function HolyShockStart( event )
     -- Variables
     if not IsServer() then return end
@@ -8,7 +10,7 @@ function HolyShockStart( event )
     local abilityLevel = ability:GetLevel()
 
     local radius = ability:GetLevelSpecialValueFor("radius", (abilityLevel - 1))
-    local duration = ability:GetLevelSpecialValueFor("buff_duration", (abilityLevel - 1))
+    local duration = GetTalentSpecialValueFor(ability, "buff_duration")
     local heal = ability:GetLevelSpecialValueFor("heal", (abilityLevel - 1))
 
     if target:GetTeamNumber() == caster:GetTeamNumber() then
@@ -32,7 +34,9 @@ function HolyShockStart( event )
             if unit:GetTeamNumber() ~= caster:GetTeamNumber() then
             ApplyDamage(damagetable)
             end
-            ability:ApplyDataDrivenModifier(caster, unit, "modifier_holy_shock", {duration = duration})
+            if duration > 0 then
+                ability:ApplyDataDrivenModifier(caster, unit, "modifier_holy_shock", {duration = duration})
+            end
         end
     end
 end
@@ -48,9 +52,9 @@ function HolyShockBuffDebuff( event )
     local time_elapsed = 0
 
     local radius = ability:GetLevelSpecialValueFor("radius", (abilityLevel - 1))
-    local duration = ability:GetLevelSpecialValueFor("buff_duration", (abilityLevel - 1))
+    local duration = GetTalentSpecialValueFor(ability, "buff_duration")
     local heal = ability:GetLevelSpecialValueFor("heal", (abilityLevel - 1))
-    local heal_buff = ability:GetLevelSpecialValueFor("buff_pct", (abilityLevel - 1))
+    local heal_buff = GetTalentSpecialValueFor(ability, "buff_pct")
 
     local tar_maxHP_change_pct = target:GetMaxHealth()*heal_buff/100
 
@@ -58,7 +62,7 @@ function HolyShockBuffDebuff( event )
     if target:GetTeamNumber() == caster:GetTeamNumber() then
         Timers:CreateTimer(function()
             if time_elapsed < duration then
-            target:Heal(tar_maxHP_change_pct*0.03, caster)
+            target:Heal(tar_maxHP_change_pct*0.03, ability)
             time_elapsed = time_elapsed + 0.03
             end
         return 0.03

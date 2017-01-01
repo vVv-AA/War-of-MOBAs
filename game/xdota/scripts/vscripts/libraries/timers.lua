@@ -17,7 +17,7 @@ TIMERS_VERSION = "1.05"
   
 
   -- A timer which calls a function with a table context
-  Timers:CreateTimer(XDota.someFunction, XDota)
+  Timers:CreateTimer(GameMode.someFunction, GameMode)
 
   -- A timer running every second that starts 5 seconds in the future, respects pauses
   Timers:CreateTimer(5, function()

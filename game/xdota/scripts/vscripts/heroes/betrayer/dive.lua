@@ -1,12 +1,3 @@
-function CheckUpgrade( event )
-	local caster = event.caster
-	local ability = event.ability
-
-	if ability:GetLevel() == 4 then
-		ability:ApplyDataDrivenModifier(caster, caster, "modifier_marked_for_death", {})
-	end
-end
-
 function Blink (keys)
 	local caster = keys.caster
 	local target = keys.target
@@ -23,7 +14,7 @@ function Blink (keys)
 
 	FindClearSpaceForUnit(caster, point, true)
 	if ability:GetLevel() > 1 then
-		ability:ApplyDataDrivenModifier(caster, caster, "modifier_bonus_speed", {})
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_dive_bonus_speed", {})
 	end
 
 	if ability:GetLevel() > 2 then
@@ -101,7 +92,6 @@ end
 function DecrementBlockStack( event )
 	local caster = event.caster
 	local ability = event.ability
-	print(event.damagetype_const)
 	local current_stack = caster:GetModifierStackCount("modifier_damage_block_physical_attacks", ability) - 1
 	caster:SetModifierStackCount( "modifier_damage_block_physical_attacks", ability, current_stack)
 	if current_stack == 0 then

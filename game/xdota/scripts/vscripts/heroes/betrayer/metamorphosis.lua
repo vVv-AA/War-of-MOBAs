@@ -10,6 +10,13 @@ function MetamorphosisCast ( event )
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_coccon", {})
     caster:SetAbsOrigin(point)
     caster:AddNoDraw()
+    caster.groundParticle1 = ParticleManager:CreateParticle("particles/units/heroes/hero_enigma/enigma_blackhole_n.vpcf", PATTACH_CUSTOMORIGIN, nil)
+    ParticleManager:SetParticleControl(caster.groundParticle1, 0, point)
+    ParticleManager:SetParticleControl(caster.groundParticle1, 1, point)
+    caster.groundParticle2 = ParticleManager:CreateParticle("particles/test_particle/metamorphosis_ground.vpcf", PATTACH_CUSTOMORIGIN, nil)
+    ParticleManager:SetParticleControl(caster.groundParticle2, 0, point)
+    ParticleManager:SetParticleControl(caster.groundParticle2, 1, point)
+    caster:SetAbsOrigin(point)
 end
 
 function MetamorphosisStart ( event )
@@ -19,9 +26,9 @@ function MetamorphosisStart ( event )
 	--ParticleManager:DestroyParticle(caster.groundParticle1, false)
 	ability.hero_count = event.hero_count
 	if ability:GetLevel() < 3 then
-		caster:AddNewModifier(caster, ability, "modifier_meta_model", { duration = ability:GetLevelSpecialValueFor("meta_duration", ability:GetLevel() - 1), purgable = false })
-		caster:AddNewModifier(caster, ability, "modifier_reduce_disable_duration", { duration = ability:GetLevelSpecialValueFor("meta_duration", ability:GetLevel() - 1), reductionFactor = 0.5, purgable = false })
-		ability:ApplyDataDrivenModifier(caster, caster, "modifier_particle_holder_meta", { duration = ability:GetLevelSpecialValueFor("meta_duration", ability:GetLevel() - 1) })
+		caster:AddNewModifier(caster, ability, "modifier_meta_model", { duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1), purgable = false })
+		caster:AddNewModifier(caster, ability, "modifier_reduce_disable_duration", { duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1), reductionFactor = 0.5, purgable = false })
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_particle_holder_meta", { duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1) })
 	else
 		caster:AddNewModifier(caster, ability, "modifier_meta_model", { purgable = false })
 		caster:AddNewModifier(caster, ability, "modifier_reduce_disable_duration", { reductionFactor = 0.5, purgable = false, permanent = true })
@@ -42,7 +49,7 @@ function CocconEnd( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 	local caster_location = caster:GetAbsOrigin()
-	local radius = ability:GetLevelSpecialValueFor("damage_aoe", ability:GetLevel() - 1)
+	local radius = ability:GetSpecialValueFor("damage_aoe")
 
     local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
     local target_team = DOTA_UNIT_TARGET_TEAM_ENEMY
@@ -67,6 +74,7 @@ function CocconEnd( keys )
 	    	hero_count = hero_count + 1
 	    end
     end
-
+	ParticleManager:DestroyParticle( caster.groundParticle1, false )
+	ParticleManager:DestroyParticle( caster.groundParticle2, false )
     MetamorphosisStart({caster = caster, ability = ability, hero_count = hero_count})
 end

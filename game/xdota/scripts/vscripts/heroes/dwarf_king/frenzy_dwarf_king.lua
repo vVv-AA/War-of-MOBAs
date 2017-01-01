@@ -14,7 +14,7 @@ function CooldownReducton( event )
 		caster.atk_index = caster.atk_index + 1
 	end
 
-	for i=1,8 do
+	for i=0, caster:GetAbilityCount() - 1 do
 		ability_by_index = caster:GetAbilityByIndex(i)
 		if ability_by_index ~= nil and ability_by_index ~= ability then
 			if ability_by_index:IsCooldownReady() == false then
@@ -39,6 +39,10 @@ function CooldownReducton( event )
 		end
 	end
 
+	if caster:HasModifier("modifier_fake_basher") then
+		return
+	end
+	
 	if caster.atk_index == 3 then
 		caster.atk_index = 0
 		local params = 

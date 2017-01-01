@@ -35,7 +35,7 @@
 			_class = "C_OP_RemapCPOrientationToYaw"
 			m_nCP = 0
 			m_nFieldOutput = 4
-			m_flRotOffset = -90.0
+			m_flRotOffset = -180.0
 		},
 	]
 	m_Renderers = 
@@ -46,13 +46,15 @@
 			m_nSequenceCombineMode = "2"
 			m_bAdditive = true
 			m_nRefractBlurType = "2"
-			m_hTexture = resource:"materials/hyperion_anim_mip0.vtex"
+			m_hTexture = resource:"materials/bullseye_anim_mip0.vtex"
 			VisibilityInputs = 
 			{
 				m_flInputMax = 0.0
 			}
-			m_flSelfIllumAmount = 1.0
+			m_flSelfIllumAmount = 0.5
 			m_bGammaCorrectVertexColors = false
+			m_flDiffuseAmount = 0.5
+			m_bDisableZBuffering = true
 		},
 	]
 	m_Initializers = 

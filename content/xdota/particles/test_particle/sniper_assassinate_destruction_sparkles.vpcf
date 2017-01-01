@@ -65,8 +65,8 @@
 		},
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMin = [ 176, 183, 46, 255 ]
-			m_ColorMax = [ 250, 255, 148, 255 ]
+			m_ColorMin = [ 183, 66, 45, 255 ]
+			m_ColorMax = [ 255, 147, 147, 255 ]
 		},
 		{
 			_class = "C_INIT_InitialVelocityNoise"

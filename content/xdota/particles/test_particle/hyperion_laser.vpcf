@@ -13,7 +13,7 @@
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
 			m_bAdditive = true
 			m_flOverbrightFactor = 8.0
-			m_hTexture = resource:"materials/beam_hotred_mip0.vtex"
+			m_hTexture = resource:"materials/particle/beam_hotwhite.vtex"
 			m_flRadiusScale = 0.5
 			m_flFinalTextureScaleU = -1.0
 			m_flFinalTextureOffsetU = 1.0

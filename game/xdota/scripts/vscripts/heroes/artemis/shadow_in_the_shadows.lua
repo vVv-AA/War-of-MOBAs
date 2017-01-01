@@ -1,12 +1,9 @@
 function Shadow( event )
 	local caster = event.caster
 	local ability = event.ability
-	if caster:HasModifier("modifier_invis_effect") then return end
-	local delay = "fade_delay_day"
-	if GameRules:IsDaytime() ~=  true then
-		delay = "fade_delay_night"
-	end
-	ability:ApplyDataDrivenModifier(caster, caster, "modifier_invis_effect", {})
+	if caster:HasModifier("modifier_phased") then return end
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_phased", {})
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_invisible", {})
 end
 
 function StartFadeTime( event )
@@ -29,5 +26,5 @@ function StartFadeTime( event )
 	if delay_time ~= 0 then
 		ability:StartCooldown(delay_time)
 	end
-	ability:ApplyDataDrivenModifier(caster, caster, "modifier_invis", {duration = delay_time + 0.01})
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_shadow_delay", {duration = delay_time + 0.01})
 end

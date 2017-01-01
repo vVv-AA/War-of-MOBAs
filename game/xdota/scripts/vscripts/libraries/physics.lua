@@ -977,7 +977,7 @@ function Physics:Unit(unit)
   Physics:CreateTimer(unit.PhysicsTimerName, {
     endTime = GameRules:GetGameTime(),
     useGameTime = true,
-    callback = function(xdota, args)
+    callback = function(reflex, args)
       local prevTime = unit.PhysicsLastTime
       if not IsValidEntity(unit) then
         return
@@ -2032,7 +2032,7 @@ function Physics:PhysicsTestCommand(...)
         useOldStyle = true,
         useGameTime = true,
         endTime = GameRules:GetGameTime(),
-        callback = function(xdota, args)
+        callback = function(reflex, args)
           local pushNum = math.floor(#units / 10) + 1
           for i=1,pushNum do
             local unit = units[RandomInt(1, #units)]

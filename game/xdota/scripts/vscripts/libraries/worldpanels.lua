@@ -6,10 +6,10 @@ WORLDPANELS_VERSION = "0.81"
   Installation
   -"require" this file inside your code in order to make the WorldPanels API availble
   -Ensure that this file is placed in the vscripts/libraries path along with timers.lua and playertables.lua
-  -Ensure that you have the xdota_worldpanels.xml in your panorama content layout folder.
-  -Ensure that you have the xdota_worldpanels.js in your panorama content scripts folder.
-  -Ensure that xdota_worldpanels.xml is included in your custom_ui_manifest.xml with
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/xdota_worldpanels.xml" />
+  -Ensure that you have the barebones_worldpanels.xml in your panorama content layout folder.
+  -Ensure that you have the barebones_worldpanels.js in your panorama content scripts folder.
+  -Ensure that barebones_worldpanels.xml is included in your custom_ui_manifest.xml with
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_worldpanels.xml" />
 
   Library Usage
   -WorldPanels are a means of displaying panorama layout files to individuals which act as though they are positioned at a specific point in the world

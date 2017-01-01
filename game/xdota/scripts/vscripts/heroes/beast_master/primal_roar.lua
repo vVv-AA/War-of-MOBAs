@@ -1,16 +1,8 @@
-function RemoveOtherUlt( event )
-	local caster = event.caster
-	if caster:HasAbility("boar_hoard_datadriven") then
-		caster:SwapAbilities("primal_roar_datadriven", "boar_hoard_datadriven", true, true)
-		caster:SwapAbilities("boar_hoard_datadriven", "tough_exterior", false, true)
-		caster:RemoveAbility("boar_hoard_datadriven")
-	end
-end
-
 function ApplyMods( event )
 	local caster = event.caster
 	local ability = event.ability
 	local bear = caster.bear
+	
 	EmitSoundOn("Hero_LoneDruid.Rabid", caster)
 	EmitSoundOn("Hero_LoneDruid.BattleCry", caster)
     caster.particles = ParticleManager:CreateParticle("particles/units/heroes/hero_lone_druid/lone_druid_savage_roar.vpcf", PATTACH_CUSTOMORIGIN, nil)
@@ -23,6 +15,11 @@ function ApplyMods( event )
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_roar_bonus_base_damage", {})
 
 	if bear ~= nil and bear:IsAlive() then
+		if bear:GetModelName() == "models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl" then
+			bear:StartGesture(ACT_DOTA_LOADOUT_RARE)
+		else
+			bear:StartGesture(ACT_DOTA_ATTACK2)
+		end
 		EmitSoundOn("Hero_LoneDruid.Rabid", bear)
 		EmitSoundOn("Hero_LoneDruid.BattleCry", bear)
 	    bear.particles = ParticleManager:CreateParticle("particles/units/heroes/hero_lone_druid/lone_druid_savage_roar.vpcf", PATTACH_CUSTOMORIGIN, nil)

@@ -1,7 +1,10 @@
 "DOTAHeroes"
 {
 	//#=========================================#
-	//#					DONE					#
+	//#					Spells	Y				#
+	//#					Talents	Y				#
+	//#					Tooltips Y				#
+	//#					Testing	Y				#
 	//#=========================================#
 	
 	"npc_dota_hero_artemis"
@@ -28,11 +31,19 @@
 		"url"		"Windranger"
 		"LastHitChallengeRival"		"npc_dota_hero_drow_ranger"
 		"HeroSelectSoundEffect"		"Hero_Windrunner.Pick"
-        "Ability1"      "aimed_shot_datadriven"
-        "Ability2"      "shadow_in_the_shadows_datadriven"
-        "Ability3"      "proprioception_datadriven"
-        "Ability4"      "marksmanship_datadriven"
-	    "Ability5"      "attribute_bonus"
+	        "Ability1"      "artemis_aimed_shot_datadriven"
+	        "Ability2"      "artemis_shadow_in_the_shadows_datadriven"
+	        "Ability3"		"artemis_hunters_net_datadriven"
+	        "Ability4"      "artemis_proprioception_datadriven"
+	        "Ability5"      "artemis_marksmanship_datadriven"
+	        "Ability10"		"special_bonus_unique_artemis_proprioception"
+	        "Ability11"		"special_bonus_unique_bonus_40_attack_damage_datadriven"
+	        "Ability12"		"special_bonus_unique_bonus_150_attack_range_datadriven"
+	        "Ability13"		"special_bonus_unique_bonus_move_speed_pct_20_datadriven"
+	        "Ability14"		"special_bonus_unique_artemis_net_radius_datadriven"
+	        "Ability15"		"special_bonus_unique_natures_curse_datadriven"
+	        "Ability16"		"special_bonus_unique_artemis_split_shot_datadriven"
+	        "Ability17"		"special_bonus_unique_bonus_60_atk_speed_datadriven"
 		"ArmorPhysical"		"-1"
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"		"22"
@@ -43,7 +54,7 @@
 		"AttackRange"		"600"
 		"ProjectileModel"		"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
 		"ProjectileSpeed"		"1250"
-		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
 		"AttributeBaseStrength"		"15"
 		"AttributeStrengthGain"		"2.500000"
 		"AttributeBaseIntelligence"		"22"
@@ -73,7 +84,10 @@
 		}
 	}
 	//#=========================================#
-	//#					DONE					#
+	//#					Spells	Y				#
+	//#					Talents	Y				#
+	//#					Tooltips Y				#
+	//#					Testing	Y				#
 	//#=========================================#
 	
 	"npc_dota_hero_beast_master"
@@ -102,11 +116,12 @@
 	        "Ability1"      "misha_datadriven"
 	        "Ability2"      "mend_datadriven"
 	        "Ability3"      "hawk_shot_datadriven"
-	        "Ability4"		"natures_curse_datadriven"
-	        "Ability5"      "boar_hoard_datadriven"
-	        "Ability6"      "primal_roar_datadriven"
-	        "Ability7"      "tough_exterior"
-	        "Ability8"      "attribute_bonus"
+	        "Ability4"      "boar_hoard_datadriven"
+	        "Ability5"      "primal_roar_datadriven"
+	        "Ability6"      "tough_exterior"
+	        "Ability7"		"natures_curse_datadriven"
+	        "Ability16"     "special_bonus_unique_beast_master_tough_exterior"
+	        "Ability17"		"special_bonus_unique_beast_master_give_other_ult"
 	        "ArmorPhysical"     "2"
 	        "AttackCapabilities"        "DOTA_UNIT_CAP_MELEE_ATTACK"
 	        "AttackDamageMin"       "41"
@@ -146,7 +161,10 @@
 	        }
 	    }
 	//#=========================================#
-	//#					DONE					#
+	//#					Spells	Y				#
+	//#					Talents	Y				#
+	//#					Tooltips Y				#
+	//#					Testing	Y				#
 	//#=========================================#
 	
 	"npc_dota_hero_betrayer"
@@ -180,10 +198,17 @@
 	        "Ability2"                  "betrayer_sweeping_strike_datadriven"                       // Ability 2
 	        "Ability3"                  "betrayer_evasion_datadriven"               // Ability 3
 	        "Ability4"                  "betrayer_hunters_thirst_datadriven"                    // Ability 4
-	        "Ability5"                  "betray_datadriven"                 // Ability 5
+	        "Ability5"                  "betrayer_betray_datadriven"                 // Ability 5
 	        "Ability6"                  "betrayer_metamorphosis"                 // Ability 6
-		    "Ability7"        			"attribute_bonus"
-	        // Armor
+	        "Ability7"					"betrayer_never_ending_hatred_datadriven"                 // Ability 7
+	        "Ability10"                 "special_bonus_unique_betrayer_never_ending_hatred"                 // Ability 10
+	        "Ability11"					"special_bonus_unique_bonus_40_attack_damage_datadriven"                 // Ability 11
+	        "Ability12"                 "special_bonus_unique_betrayer_lifesteal"                 // Ability 12
+	        "Ability13"                 "special_bonus_unique_betrayer_permanent_immolation"                 // Ability 13
+	        "Ability14"                 "special_bonus_unique_betrayer_marked_for_death"                 // Ability 14
+	        "Ability15"					"special_bonus_unique_bonus_60_atk_speed_datadriven"                 // Ability 15
+	        "Ability16"                 "special_bonus_unique_betrayer_30_magic_resistance"                 // Ability 16
+	        "Ability17"                 "special_bonus_unique_betrayer_betray"                 // Ability 17
 	        //-------------------------------------------------------------------------------------------------------------
 	        "ArmorPhysical"             "-1"                                        // Physical protection.
 	
@@ -238,8 +263,12 @@
 	        }
 	    }
 	//#=========================================#
-	//#					DONE					#
+	//#					Spells	Y				#
+	//#					Talents	Y				#
+	//#					Tooltips Y				#
+	//#					Testing	Y				#
 	//#=========================================#
+	
 	
 	"npc_dota_hero_dwarf_king"
 		{
@@ -263,10 +292,10 @@
 			"Ability2"		"dwarf_king_thunder_clap"
 			"Ability3"		"dwarf_king_inner_vitality"
 			"Ability4"		"dwarf_king_midget_toss"
-			"Ability5"		"dwarf_king_frenzy_datadriven"
-			"Ability6"		"dwarf_king_avatar"
-			"Ability7"		"tough_exterior"
-			"Ability8"		"attribute_bonus"
+			"Ability5"		"dwarf_king_avatar"
+			"Ability6"		"tough_exterior"
+			"Ability16"		"special_bonus_unique_dwarf_king_tough_exterior"
+			"Ability17"		"special_bonus_unique_dwarf_king_static_field_datadriven"
 			"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
 			"ArmorPhysical"				"1"
 			"MagicalResistance"			"30.000001"
@@ -314,57 +343,90 @@
 			}
 		}
 	//#=========================================#
-	//#					DONE					#
+	//#					Spells	Y				#
+	//#					Talents	Y				#
+	//#					Tooltips Y				#
+	//#					Testing	Y				#
 	//#=========================================#
 	
-	"npc_dota_hero_igneous"
-	  {
-	    "AbilityLayout"   "7"
-	    "override_hero"   "npc_dota_hero_tiny"
-	    "SoundSet"        "Hero_Tiny"
-	    "Ability1"        "magma_smash_datadriven" 
-	    "Ability2"        "lava_pool_datadriven" 
-	    "Ability3"        "magma_bond_datadriven" 
-	    "Ability4"        "taunt_datadriven"
-	    "Ability5"        "war_club_datadriven"
-	    "Ability6"        "volcano_datadriven"
-	    "Ability7"        "lavaling_datadriven"
-	    "Ability8"        "attribute_bonus"
 	
-	    "Model"                     "models/heroes/tiny_04/tiny_04.vmdl"
-	
-	    // Armor
-	    //-------------------------------------------------------------------------------------------------------------
-	    "ArmorPhysical"             "0.45"                              // Physical protection.
-	    "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
-	    "AttackDamageMin"           "30"                                    // Damage range min.
-	    "AttackDamageMax"           "33"                                    // Damage range max.
-	    "AttackRate"                "1.7"                                   // Speed of attack.
-	    "AttackAnimationPoint"      "0.56"                                  // Normalized time in animation cycle to attack.
-	    "AttackAcquisitionRange"    "600"                                   // Range within a target can be acquired.
-	    "AttackRange"               "150"                                   // Range within a target can be attacked.
-	    "url"                       "Tiny"
-	
-	    // Attributes
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AttributePrimary"              "DOTA_ATTRIBUTE_STRENGTH"
-	    "AttributeBaseStrength"         "23"                                    // Base strength
-	    "AttributeStrengthGain"         "2.4"                                   // Strength bonus per level.
-	    "AttributeBaseAgility"          "18"                                    // Base agility
-	    "AttributeAgilityGain"          "1.2"                                   // Agility bonus per level.
-	    "AttributeBaseIntelligence"     "19"                                    // Base intelligence
-	    "AttributeIntelligenceGain"     "2.1"                                   // Intelligence bonus per level.
-	
-	        // Movement
-	        //-------------------------------------------------------------------------------------------------------------
-	        "MovementSpeed"             "285"                                   // Speed.
-	        "MovementTurnRate"          "0.5"                                   // Turning rate.
-	        "HasAggressiveStance"       "1"                                         // Plays alternate idle/run animation when near enemies
-	        "HealthBarOffset"           "175"
-	    }
+	"npc_dota_hero_gun_runner_datadriven"
+		{
+			"override_hero"	"npc_dota_hero_sniper"
+			"Model"		"models/heroes/sniper/sniper.vmdl"
+			"Portrait"		"vgui/hud/heroportraits/portrait_sniper"
+			"IdleExpression"		"scenes/sniper/sniper_exp_idle_01.vcd"
+			"SoundSet"		"Hero_Sniper"
+			"Enabled"		"1"
+			"Role"			"Carry,Nuker"
+			"Rolelevels"	"3,1"
+			"Team"		"Good"
+			"ModelScale"		"0.840000"
+			"LoadoutScale"		"1"
+			"HeroGlowColor"		"237 154 15"
+			"PickSound"		"sniper_snip_spawn_01"
+			"BanSound"		"sniper_snip_anger_01"
+			"url"		"Sniper"
+			"LastHitChallengeRival"		"npc_dota_hero_drow_ranger"
+			"HeroSelectSoundEffect"		"Hero_Sniper.Pick"
+			"Ability1"		"gun_runner_assassinate_datadriven"
+			"Ability2"		"gun_runner_run_n_gun"
+			"Ability3"		"gun_runner_adrenaline_surge"
+			"Ability4"		"gun_runner_scout_drone_datadriven"
+			"Ability5"		"gun_runner_calldown_datadriven"
+			"Ability6"		"gun_runner_wrap_strike_datadriven"
+			"Ability12"		"special_bonus_unique_bonus_150_attack_range_datadriven"
+			"Ability16"		"special_bonus_unique_wrap_strike"
+			"Ability17"		"special_bonus_unique_bonus_120_atk_speed_datadriven"
+			"ArmorPhysical"		"-1"
+			"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+			"AttackDamageMin"		"15"
+			"AttackDamageMax"		"21"
+			"AttackRate"		"1.700000"
+			"AttackAnimationPoint"		"0.170000"
+			"AttackAcquisitionRange"		"950"
+			"AttackRange"		"550"
+			"ProjectileModel"		"particles/units/heroes/hero_sniper/sniper_base_attack.vpcf"
+			"ProjectileSpeed"		"2400"
+			"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+			"AttributeBaseStrength"		"16"
+			"AttributeStrengthGain"		"1.700000"
+			"AttributeBaseIntelligence"		"15"
+			"AttributeIntelligenceGain"		"2.600000"
+			"AttributeBaseAgility"		"21"
+			"AttributeAgilityGain"		"2.500000"
+			"MovementSpeed"		"290"
+			"MovementTurnRate"		"0.700000"
+			"HasAggressiveStance"		"1"
+			"VisionNighttimeRange"		"1100"
+			"BoundsHullName"		"DOTA_HULL_SIZE_HERO"
+			"HealthBarOffset"		"110"
+			"RenderablePortrait"
+			{
+				"Particles"
+				{
+					"particles/units/heroes/hero_sniper/sniper_loadout.vpcf"
+					{
+						"0"
+						{
+							"type"		"follow_origin"
+							"location"		"attach_hitloc"
+						}
+					}
+				}
+			}
+			"particle_folder"		"particles/units/heroes/hero_sniper"
+			"GameSoundsFile"		"soundevents/game_sounds_heroes/game_sounds_sniper.vsndevts"
+			"VoiceFile"		"soundevents/voscripts/game_sounds_vo_sniper.vsndevts"
+		}
+
 	//#=========================================#
-	//#					DONE					#
+	//#					Spells	Y				#
+	//#					Talents	Y				#
+	//#					Tooltips Y				#
+	//#					Testing	Y				#
 	//#=========================================#
+	
 	
 	"npc_dota_hero_omniknight_custom"
 	    {
@@ -403,8 +465,12 @@
 	        "Ability5"        "holy_devotion"
 	        "Ability6"        "divine_shield"
 	        "Ability7"        "sacred_duty_datadriven"
-	    	"Ability8"        "attribute_bonus"
-	
+	    	"Ability12"       "special_bonus_unique_omni_holy_shock"
+	    	"Ability13"		  "special_bonus_unique_omni_shield_of_the_righteous_datadriven"
+	    	"Ability14"		  "special_bonus_unique_omni_unbreakable_fortitude"
+	    	"Ability15"		  "special_bonus_unique_reduce_respawn_time_by_50"
+	    	"Ability16"		  "special_bonus_unique_omni_sacred_duty_datadriven"
+	    	"Ability17"		  "special_bonus_unique_omni_sacred_duty_datadriven_copy"	
 	        // Armor
 	        //-------------------------------------------------------------------------------------------------------------
 	        "ArmorPhysical"         "3"                                     // Physical protection.
@@ -462,8 +528,151 @@
 	        }               
 	    }
 	//#=========================================#
-	//#					DONE					#
+	//#					Spells	Y				#
+	//#					Talents	Y				#
+	//#					Tooltips Y				#
+	//#					Testing	Y				#
 	//#=========================================#
+	
+	
+	"npc_dota_hero_vylanas"
+	    {
+	        "override_hero"                     "npc_dota_hero_drow_ranger"  
+	        "Model"                             "models/heroes/drow/drow.vmdl"
+	        "Portrait"                          "vgui/hud/heroportraits/portrait_drowranger"
+	        "IdleExpression"                    "scenes/drowranger/drowranger_exp_idle_01.vcd"
+	        "SoundSet"                          "Hero_DrowRanger"
+	        "PickSound"                         "drowranger_dro_spawn_03"
+	        "BanSound"                          "drowranger_dro_anger_01"
+	        "Enabled"                           "1"
+	        "BotImplemented"                    "1"
+	        "HeroUnlockOrder"                   "1"
+	        "Role"                              "Carry,Pusher"
+	        "Rolelevels"                        "2,2"
+	        "Team"                              "Good"
+	        "ModelScale"                        "0.970000"
+	        "LoadoutScale"                      "1.100000"
+	        "HeroGlowColor"                     "1 60 246"
+	        "CMEnabled"                         "1"
+	        "url"                               "Drow_Ranger"
+	        "LastHitChallengeRival"             "npc_dota_hero_windrunner"
+	        "HeroSelectSoundEffect"             "Hero_DrowRanger.Pick"
+	        "AbilityLayout"						"5"
+	        "Ability1"                          "dark_ranger_black_arrow_datadriven"
+	        "Ability2"                          "dark_ranger_rapid_fire_datadriven"
+	        "Ability3"                          "dark_ranger_spirit_swarm_datadriven"
+	        "Ability4"                          "dark_ranger_stifling_dagger_single_target"
+	        "Ability5"                          "dark_ranger_will_of_the_dead"
+	        "Ability6"                          "dark_ranger_will_of_the_forsaken"
+	        "Ability12"							"special_bonus_unique_vylanas_will_of_the_dead"
+	        "Ability13"							"special_bonus_unique_vylanas_will_of_the_dead_copy"
+	        "Ability14"							"special_bonus_unique_45_atk_speed_aura"
+	        "Ability15"							"special_bonus_unique_25_pct_damage_aura"
+	        "Ability16"							"special_bonus_unique_vylanas_aoe_stifling_daggers"
+	        "Ability17"							"special_bonus_unique_vylanas_will_of_the_forsaken"
+	        "ArmorPhysical"                     "-3"
+	        "AttackCapabilities"                "DOTA_UNIT_CAP_RANGED_ATTACK"
+	        "AttackDamageMin"                   "18"
+	        "AttackDamageMax"                   "29"
+	        "AttackRate"                        "1.700000"
+	        "AttackAnimationPoint"              "0.700000"
+	        "AttackAcquisitionRange"            "800"
+	        "AttackRange"                       "625"
+	        "ProjectileModel"                   "particles/units/heroes/hero_drow/drow_base_attack.vpcf"
+	        "ProjectileSpeed"                   "1250"
+	        "AttributePrimary"                  "DOTA_ATTRIBUTE_AGILITY"
+	        "AttributeBaseStrength"             "17"
+	        "AttributeStrengthGain"             "1.900000"
+	        "AttributeBaseIntelligence"         "15"
+	        "AttributeIntelligenceGain"         "1.400000"
+	        "AttributeBaseAgility"              "26"
+	        "AttributeAgilityGain"              "1.900000"
+	        "VisionDaytimeRange"                "1800"
+	        "MovementSpeed"                     "300"
+	        "MovementTurnRate"                  "0.700000"
+	        "HasAggressiveStance"               "0"
+	        "BoundsHullName"                    "DOTA_HULL_SIZE_HERO"
+	        "HealthBarOffset"                   "130"
+	        "particle_folder"                   "particles/units/heroes/hero_drow"
+	        "GameSoundsFile"                    "soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+	        "VoiceFile"                         "soundevents/voscripts/game_sounds_vo_drowranger.vsndevts"
+	        "RenderablePortrait"
+	        {
+	            "Particles"
+	            {
+	                "particles/units/heroes/hero_drow/drow_loadout.vpcf"
+	                {
+	                    "0"
+	                    {
+	                        "type"      "follow_origin"
+	                        "location"      "attach_hitloc"
+	                    }
+	                }
+	            }
+	        }
+	    }
+	    
+	//#=========================================#
+	//#					Spells	X				#
+	//#					Talents	X				#
+	//#					Tooltips X				#
+	//#					Testing	X				#
+	//#=========================================#
+	
+	
+	"npc_dota_hero_igneous"
+	  {
+	    "AbilityLayout"   "7"
+	    "override_hero"   "npc_dota_hero_tiny"
+	    "SoundSet"        "Hero_Tiny"
+	    "Ability1"        "magma_smash_datadriven" 
+	    "Ability2"        "lava_pool_datadriven" 
+	    "Ability3"        "magma_bond_datadriven" 
+	    "Ability4"        "taunt_datadriven"
+	    "Ability5"        "war_club_datadriven"
+	    "Ability6"        "volcano_datadriven"
+	    "Ability7"        "lavaling_datadriven"
+	    "Ability8"        "attribute_bonus"
+	
+	    "Model"                     "models/heroes/tiny_04/tiny_04.vmdl"
+	
+	    // Armor
+	    //-------------------------------------------------------------------------------------------------------------
+	    "ArmorPhysical"             "0.45"                              // Physical protection.
+	    "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
+	    "AttackDamageMin"           "30"                                    // Damage range min.
+	    "AttackDamageMax"           "33"                                    // Damage range max.
+	    "AttackRate"                "1.7"                                   // Speed of attack.
+	    "AttackAnimationPoint"      "0.56"                                  // Normalized time in animation cycle to attack.
+	    "AttackAcquisitionRange"    "600"                                   // Range within a target can be acquired.
+	    "AttackRange"               "150"                                   // Range within a target can be attacked.
+	    "url"                       "Tiny"
+	
+	    // Attributes
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AttributePrimary"              "DOTA_ATTRIBUTE_STRENGTH"
+	    "AttributeBaseStrength"         "23"                                    // Base strength
+	    "AttributeStrengthGain"         "2.4"                                   // Strength bonus per level.
+	    "AttributeBaseAgility"          "18"                                    // Base agility
+	    "AttributeAgilityGain"          "1.2"                                   // Agility bonus per level.
+	    "AttributeBaseIntelligence"     "19"                                    // Base intelligence
+	    "AttributeIntelligenceGain"     "2.1"                                   // Intelligence bonus per level.
+	
+	        // Movement
+	        //-------------------------------------------------------------------------------------------------------------
+	        "MovementSpeed"             "285"                                   // Speed.
+	        "MovementTurnRate"          "0.5"                                   // Turning rate.
+	        "HasAggressiveStance"       "1"                                         // Plays alternate idle/run animation when near enemies
+	        "HealthBarOffset"           "175"
+	    }
+
+	//#=========================================#
+	//#					Spells	X				#
+	//#					Talents	X				#
+	//#					Tooltips X				#
+	//#					Testing	X				#
+	//#=========================================#
+	
 	"npc_dota_hero_oracle_modified"
 	    {
 	        "override_hero"     "npc_dota_hero_oracle"
@@ -539,214 +748,4 @@
 	            }
 	        }
 	    }
-	//#=========================================#
-	//#				NEEDS UPDATE				#
-	//#=========================================#
-	
-	"npc_dota_hero_poseidon"
-		{
-			"override_hero"		"npc_dota_hero_slardar"
-			"Model"		"models/heroes/slardar/slardar.vmdl"
-			"Portrait"		"vgui/hud/heroportraits/portrait_slardar"
-			"IdleExpression"		"scenes/slardar/slardar_exp_idle_01.vcd"
-			"SoundSet"		"Hero_Slardar"
-			"Enabled"		"1"
-			"Team"		"Bad"
-			"ModelScale"		"0.880000"
-			"HeroGlowColor"		"78 127 208"
-			"PickSound"		"slardar_slar_spawn_01"
-			"BanSound"		"slardar_slar_anger_04"
-			"Legs"	"0"
-			"url"		"Slardar"
-			"LastHitChallengeRival"		"npc_dota_hero_tidehunter"
-			"HeroSelectSoundEffect"		"Hero_Slardar.Pick"
-			"Ability1"		"poseidon_gush_datadriven"
-			"Ability2"		"poseidon_crush_datadriven"
-			"Ability3"		"slardar_bash"
-			"Ability4"		"changing_tides"
-			"Ability5"		"slardar_amplify_damage"
-			"ArmorPhysical"		"3"
-			"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
-			"AttackRange"			"650"
-			"AttackDamageMin"		"30"
-			"AttackDamageMax"		"38"
-			"AttackRate"		"1.700000"
-			"AttackAnimationPoint"		"0.360000"
-			"AttackAcquisitionRange"		"800"
-			"ProjectileModel"		"particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
-			"ProjectileSpeed"		"1250"
-			"MovementSpeed"			"290"
-			"MovementTurnRate"		"0.500000"
-			"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
-			"AttributeBaseStrength"		"21"
-			"AttributeStrengthGain"		"2.800000"
-			"AttributeBaseIntelligence"		"15"
-			"AttributeIntelligenceGain"		"1.500000"
-			"AttributeBaseAgility"		"17"
-			"AttributeAgilityGain"		"2.400000"
-			"BoundsHullName"		"DOTA_HULL_SIZE_HERO"
-			"HealthBarOffset"		"140"
-			"VoiceFile"		"soundevents/voscripts/game_sounds_vo_slardar.vsndevts"
-			"particle_folder"		"particles/units/heroes/hero_slardar"
-			"GameSoundsFile"		"soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
-			"RenderablePortrait"
-			{
-				"Particles"
-				{
-					"particles/units/heroes/hero_slardar/slardar_loadout.vpcf"
-					{
-						"0"
-						{
-							"type"		"follow_origin"
-							"location"		"attach_hitloc"
-						}
-					}
-				}
-			}
-		}
-	//#=========================================#
-	//#					DONE					#
-	//#=========================================#
-	
-	"npc_dota_hero_vylanas"
-	    {
-	        "override_hero"                     "npc_dota_hero_drow_ranger"  
-	        "Model"                             "models/heroes/drow/drow.vmdl"
-	        "Portrait"                          "vgui/hud/heroportraits/portrait_drowranger"
-	        "IdleExpression"                    "scenes/drowranger/drowranger_exp_idle_01.vcd"
-	        "SoundSet"                          "Hero_DrowRanger"
-	        "PickSound"                         "drowranger_dro_spawn_03"
-	        "BanSound"                          "drowranger_dro_anger_01"
-	        "Enabled"                           "1"
-	        "BotImplemented"                    "1"
-	        "HeroUnlockOrder"                   "1"
-	        "Role"                              "Carry,Pusher"
-	        "Rolelevels"                        "2,2"
-	        "Team"                              "Good"
-	        "ModelScale"                        "0.970000"
-	        "LoadoutScale"                      "1.100000"
-	        "HeroGlowColor"                     "1 60 246"
-	        "CMEnabled"                         "1"
-	        "url"                               "Drow_Ranger"
-	        "LastHitChallengeRival"             "npc_dota_hero_windrunner"
-	        "HeroSelectSoundEffect"             "Hero_DrowRanger.Pick"
-	        "AbilityLayout"						"5"
-	        "Ability1"                          "dark_ranger_black_arrow_datadriven"
-	        "Ability2"                          "dark_ranger_rapid_fire_datadriven"
-	        "Ability3"                          "dark_ranger_spirit_swarm_datadriven"
-	        "Ability4"                          "dark_ranger_stifling_daggers"
-	        "Ability5"                          "dark_ranger_will_of_the_dead"
-	        "Ability6"                          "dark_ranger_will_of_the_forsaken"
-	    	"Ability7"                          "attribute_bonus"
-	        "ArmorPhysical"                     "-3"
-	        "AttackCapabilities"                "DOTA_UNIT_CAP_RANGED_ATTACK"
-	        "AttackDamageMin"                   "18"
-	        "AttackDamageMax"                   "29"
-	        "AttackRate"                        "1.700000"
-	        "AttackAnimationPoint"              "0.700000"
-	        "AttackAcquisitionRange"            "800"
-	        "AttackRange"                       "625"
-	        "ProjectileModel"                   "particles/units/heroes/hero_drow/drow_base_attack.vpcf"
-	        "ProjectileSpeed"                   "1250"
-	        "AttributePrimary"                  "DOTA_ATTRIBUTE_AGILITY"
-	        "AttributeBaseStrength"             "17"
-	        "AttributeStrengthGain"             "1.900000"
-	        "AttributeBaseIntelligence"         "15"
-	        "AttributeIntelligenceGain"         "1.400000"
-	        "AttributeBaseAgility"              "26"
-	        "AttributeAgilityGain"              "1.900000"
-	        "VisionDaytimeRange"                "1800"
-	        "MovementSpeed"                     "300"
-	        "MovementTurnRate"                  "0.700000"
-	        "HasAggressiveStance"               "0"
-	        "BoundsHullName"                    "DOTA_HULL_SIZE_HERO"
-	        "HealthBarOffset"                   "130"
-	        "particle_folder"                   "particles/units/heroes/hero_drow"
-	        "GameSoundsFile"                    "soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
-	        "VoiceFile"                         "soundevents/voscripts/game_sounds_vo_drowranger.vsndevts"
-	        "RenderablePortrait"
-	        {
-	            "Particles"
-	            {
-	                "particles/units/heroes/hero_drow/drow_loadout.vpcf"
-	                {
-	                    "0"
-	                    {
-	                        "type"      "follow_origin"
-	                        "location"      "attach_hitloc"
-	                    }
-	                }
-	            }
-	        }
-	    }
-	    
-	//#=========================================#
-	//#					DONE					#
-	//#=========================================#
-
-	"npc_dota_hero_sniper_datadriven"
-		{
-			"override_hero"	"npc_dota_hero_sniper"
-			"Model"		"models/heroes/sniper/sniper.vmdl"
-			"Portrait"		"vgui/hud/heroportraits/portrait_sniper"
-			"IdleExpression"		"scenes/sniper/sniper_exp_idle_01.vcd"
-			"SoundSet"		"Hero_Sniper"
-			"Enabled"		"1"
-			"Role"			"Carry,Nuker"
-			"Rolelevels"	"3,1"
-			"Team"		"Good"
-			"ModelScale"		"0.840000"
-			"LoadoutScale"		"1"
-			"HeroGlowColor"		"237 154 15"
-			"PickSound"		"sniper_snip_spawn_01"
-			"BanSound"		"sniper_snip_anger_01"
-			"url"		"Sniper"
-			"LastHitChallengeRival"		"npc_dota_hero_drow_ranger"
-			"HeroSelectSoundEffect"		"Hero_Sniper.Pick"
-			"Ability1"		"assassinate_datadriven"
-			"Ability2"		"run_n_gun"
-			"Ability3"		"adrenaline_surge"
-			"Ability4"		"scout_drone_datadriven"
-			"Ability5"		"calldown_datadriven"
-			"ArmorPhysical"		"-1"
-			"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-			"AttackDamageMin"		"15"
-			"AttackDamageMax"		"21"
-			"AttackRate"		"1.700000"
-			"AttackAnimationPoint"		"0.170000"
-			"AttackAcquisitionRange"		"950"
-			"AttackRange"		"550"
-			"ProjectileModel"		"particles/units/heroes/hero_sniper/sniper_base_attack.vpcf"
-			"ProjectileSpeed"		"2400"
-			"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
-			"AttributeBaseStrength"		"16"
-			"AttributeStrengthGain"		"1.700000"
-			"AttributeBaseIntelligence"		"15"
-			"AttributeIntelligenceGain"		"2.600000"
-			"AttributeBaseAgility"		"21"
-			"AttributeAgilityGain"		"2.500000"
-			"MovementSpeed"		"290"
-			"MovementTurnRate"		"0.700000"
-			"HasAggressiveStance"		"1"
-			"VisionNighttimeRange"		"1100"
-			"BoundsHullName"		"DOTA_HULL_SIZE_HERO"
-			"HealthBarOffset"		"110"
-			"RenderablePortrait"
-			{
-				"Particles"
-				{
-					"particles/units/heroes/hero_sniper/sniper_loadout.vpcf"
-					{
-						"0"
-						{
-							"type"		"follow_origin"
-							"location"		"attach_hitloc"
-						}
-					}
-				}
-			}
-			"particle_folder"		"particles/units/heroes/hero_sniper"
-			"GameSoundsFile"		"soundevents/game_sounds_heroes/game_sounds_sniper.vsndevts"
-			"VoiceFile"		"soundevents/voscripts/game_sounds_vo_sniper.vsndevts"
-		}
 }

@@ -5,9 +5,9 @@ NOTIFICATIONS_VERSION = "1.00"
 
   Installation
   -"require" this file inside your code in order to gain access to the Notifications class for sending notifications to players, teams, or all clients.
-  -Ensure that you have the xdota_notifications.xml, xdota_notifications.js, and xdota_notifications.css files in your panorama content folder.
-  -Ensure that xdota_notifications.xml is included in your custom_ui_manifest.xml with
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/xdota_notifications.xml" />
+  -Ensure that you have the barebones_notifications.xml, barebones_notifications.js, and barebones_notifications.css files in your panorama content folder.
+  -Ensure that barebones_notifications.xml is included in your custom_ui_manifest.xml with
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" />
 
   Usage
   -Notifications can be sent to the Top or Bottom notification panel of an individual player, a whole team, or all clients at once.

@@ -28,7 +28,13 @@ function JumpHorizonal( keys )
 		ability.jump_traveled = ability.jump_traveled + ability.jump_speed
 	else
 		caster:InterruptMotionControllers(true)
-			ability:ApplyDataDrivenModifier(caster, caster, "modifier_toss_stomp", {duration = 0.5})
+		Timers:CreateTimer(0, function ()
+			if caster:GetAbsOrigin() == GetGroundPosition(caster:GetAbsOrigin(), caster) then
+				ability:ApplyDataDrivenModifier(caster, caster, "modifier_toss_stomp", {duration = 0.5})
+				return nil
+			end
+			return 0.1
+		end)
 	end
 end
 

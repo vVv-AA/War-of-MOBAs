@@ -1,15 +1,15 @@
 require("heroes/generics/Disables")
 
-function GiveSlowAttacks( keys )
-	if keys.ability:GetLevel() == 3 then
-		keys.ability:ApplyDataDrivenModifier(keys.caster, keys.caster, "modifier_black_arrow_slow_arrows", {})
+function Upgrade( keys )
+	if keys.ability:GetLevel() == 2 then
+		keys.ability:ApplyDataDrivenModifier(keys.caster, keys.caster, "modifier_black_arrow_slow_buff_datadriven", {})
 	end
 end
 function ApplyStunModifier( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 	local target = keys.target
-
+	local stun_duration = ability:GetSpecialValueFor("stun_duration")
 	if target:IsHero() == false and target:GetUnitName() ~= "npc_dota_roshan" then
 		local duration = keys.duration
 		local params = 
@@ -19,7 +19,7 @@ function ApplyStunModifier( keys )
 			target = target,
 			bypass = "false",
 			purgable = true,
-			duration = keys.duration,
+			duration = stun_duration,
 		}
 		ApplyStun(params)
 	end
@@ -62,27 +62,37 @@ function BlowUpDamage( keys )
 	end
 end
 
-function IncreaseStackCount( keys )
+function ApplySlow( keys )
 	local caster = keys.caster
 	local target = keys.target
-	local modifier = target:FindModifierByName("modifier_black_arrow_stack_holder")
 	local ability = keys.ability
-	local current_stack = target:GetModifierStackCount( "modifier_black_arrow_stack_holder", ability )
 	local duration = ability:GetSpecialValueFor("slow_duration")
 
-	if target:HasModifier( "modifier_black_arrow_stack_holder" ) then
-		current_stack = target:GetModifierStackCount( "modifier_black_arrow_stack_holder", ability )
-		ability:ApplyDataDrivenModifier(caster, target, "modifier_black_arrow_stack_holder", {duration = duration})
-		target:SetModifierStackCount( "modifier_black_arrow_stack_holder", ability, current_stack + 1 )
+	if target:HasModifier( "modifier_black_arrow_slow_debuff_datadriven" ) then
+		local current_stack = target:GetModifierStackCount( "modifier_black_arrow_slow_debuff_datadriven", ability )
+		target:RemoveModifierByNameAndCaster("modifier_black_arrow_slow_debuff_datadriven", caster)
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_black_arrow_slow_debuff_datadriven", {duration = duration})
+		target:SetModifierStackCount( "modifier_black_arrow_slow_debuff_datadriven", ability, current_stack + 1 )
 	else
-		ability:ApplyDataDrivenModifier( caster, target, "modifier_black_arrow_stack_holder", { Duration = duration } )
-		target:SetModifierStackCount( "modifier_black_arrow_stack_holder", ability, 1 )
+		ability:ApplyDataDrivenModifier( caster, target, "modifier_black_arrow_slow_debuff_datadriven", { duration = duration } )
+		target:SetModifierStackCount( "modifier_black_arrow_slow_debuff_datadriven", ability, 1 )
 	end
 end
 
 function DecreaseStackCount( keys )
 	local target = keys.target
 	local ability = keys.ability
-	local current_stack = target:GetModifierStackCount( "modifier_black_arrow_stack_holder", ability )
-	target:SetModifierStackCount("modifier_black_arrow_stack_holder", keys.ability, math.max(current_stack - 1, 0))
+	local current_stack = target:GetModifierStackCount( "modifier_black_arrow_slow_debuff_datadriven", ability )
+	if current_stack == 1 then
+		target:RemoveModifierByName("modifier_black_arrow_slow_debuff_datadriven")
+	end
+	target:SetModifierStackCount("modifier_black_arrow_stack_holder", keys.ability, current_stack - 1)
+end
+
+function Dead_Effect( keys )
+	local particleName = "particles/units/heroes/hero_sandking/sandking_caustic_finale_explode.vpcf"
+	local soundEventName = "Ability.SandKing_CausticFinale"
+	
+	local fxIndex = ParticleManager:CreateParticle( particleName, PATTACH_ABSORIGIN, keys.target )
+	StartSoundEvent( soundEventName, keys.target )
 end

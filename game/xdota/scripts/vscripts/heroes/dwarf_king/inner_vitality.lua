@@ -43,14 +43,9 @@ function ActiveStoneForm( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 	if ability:GetLevel() < 3 then return end
-	RemoveParticles(keys)
+	--[[
 	ability.particleExtra = ParticleManager:CreateParticle("particles/test_particle/dwarf_king_inner_vitality_faster_heal.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
 	ParticleManager:SetParticleControl(ability.particleExtra,1,Vector(150, 0, 0))
+	]]
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_stone_form", {duration = ability:GetSpecialValueFor("active_duration")})
-end
-
-function RemoveParticles( keys )
-	local ability = keys.ability
-	if ability.particleExtra == nil then return end
-	ParticleManager:DestroyParticle(ability.particleExtra, true)
 end

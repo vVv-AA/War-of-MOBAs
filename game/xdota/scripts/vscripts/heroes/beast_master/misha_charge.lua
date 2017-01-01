@@ -12,7 +12,7 @@ function Charge( keys )
 	local distance = (target_point - caster_location):Length2D()
 	local direction = (target_point - caster_location):Normalized()
 	local duration = distance/speed
-	local max_distance = ability:GetLevelSpecialValueFor("tooltip_range", (ability:GetLevel() - 1))
+	local max_distance = ability:GetLevelSpecialValueFor("charge_range", (ability:GetLevel() - 1))
 
 	if distance > max_distance then
 		distance = max_distance
@@ -81,11 +81,8 @@ function ChargeMotion( keys )
 				ability:RefundManaCost()
 				local cooldown_remaining = ability:GetCooldownTimeRemaining()
 				ability:EndCooldown()
-				ability:StartCooldown(cooldown_remaining/5)
+				ability:StartCooldown(ability:GetSpecialValueFor("cooldown_if_no_hero_is_hit"))
 			end
-		end
-		if ability:GetLevel() > 2 then
-			ability:ApplyDataDrivenModifier(caster, caster, "modifier_magic_reduction", {})
 		end
 		caster:InterruptMotionControllers(false)
 	end
@@ -99,7 +96,7 @@ function CooldownReducton( event )
 	if ability:IsCooldownReady() then return end
 	cooldown_remaining = ability:GetCooldownTimeRemaining()
 	ability:EndCooldown()
-	ability:StartCooldown(cooldown_remaining - reduction)
+	ability:StartCooldown(math.max(cooldown_remaining - reduction, 0))
 end
 
 function CastChargeOnMisha( event )
@@ -115,7 +112,5 @@ function CastChargeOnMisha( event )
 		if bear:IsAlive() and charge_ability:IsCooldownReady() then
 			bear:CastAbilityOnPosition(point, charge_ability, bear:GetPlayerOwnerID())
 		end
-	else
-		print("fase")
 	end
 end

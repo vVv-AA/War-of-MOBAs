@@ -6,7 +6,6 @@ LinkLuaModifier("modifier_immune_hex", "heroes/generics/modifier_immune_hex.lua"
 LinkLuaModifier("modifier_immune_disarm", "heroes/generics/modifier_immune_disarm.lua", LUA_MODIFIER_MOTION_NONE)
 
 function ApplyStun( keys )
-	print("aaaa")
 	local caster = keys.caster
 	local ability = keys.ability
 	local target = keys.target

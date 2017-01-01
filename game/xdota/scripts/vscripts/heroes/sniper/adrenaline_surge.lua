@@ -7,3 +7,11 @@ function AdrenalineSurgeActivate( keys )
 		ability:CastAbility()
 	end
 end
+
+function Heal( keys )
+	local caster = keys.caster
+	local ability = keys.ability
+	local total_heal = ability:GetLevelSpecialValueFor("total_heal", ability:GetLevel() - 1)
+	local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1)
+	caster:Heal(total_heal/duration, ability)
+end

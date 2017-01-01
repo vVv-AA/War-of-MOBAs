@@ -32,7 +32,7 @@ function SpawnShip( keys )
 		bReplaceExisting = false,
 		bProvidesVision = false,
         iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1,
-        Damage = unit.side_gunner:GetAverageTrueAttackDamage()*ability:GetSpecialValueFor("building_dmg_fact"),
+        Damage = unit.side_gunner:GetAttackDamage()*ability:GetSpecialValueFor("building_dmg_fact"),
 	}
 
 	local max_distance = ability:GetSpecialValueFor("hyperion_distance")

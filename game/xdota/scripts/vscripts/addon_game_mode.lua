@@ -1,6 +1,6 @@
 require('internal/util')
 require('mechanics/wearables')
-require('gamemode')
+require('xdota')
 
 function Precache( context )
 --[[
@@ -10,10 +10,10 @@ function Precache( context )
 	any equipped cosmetics, and perform the data-driven precaching defined in that hero's
 	precache{} block, as well as the precache{} block for any equipped abilities.
 
-	See GameMode:PostLoadPrecache() in GameMode.lua for more information
+	See XDota:PostLoadPrecache() in xdita.lua for more information
 	]]
 
-	DebugPrint("[GameMode] Performing pre-load precache")
+	DebugPrint("[XDota] Performing pre-load precache")
 
 	-- Particles can be precached individually or by folder
 	-- It it likely that precaching a single particle system will precache all of its children, but this may not be guaranteed
@@ -42,9 +42,8 @@ end
 
 -- Create the game mode when we activate
 function Activate()
-	GameRules.GameMode = GameMode()
-		print("Debug..Initializing disable list")
-		GameRules.GameMode.stun_list = {
+	GameRules.XDota = XDota()	
+	GameRules.XDota.stun_list = {
 		"modifier_abyssal_underlord_pit_of_malice_ensare",
 		"modifier_ancientapparition_coldfeet_freeze",
 		"modifier_bane_fiends_grip", -- does not work
@@ -86,7 +85,7 @@ function Activate()
 		"modifier_eul_cyclone",
 		"modifier_generic_stun",
 	}
-	GameRules.GameMode.root_list = {
+	GameRules.XDota.root_list = {
 		"modifier_crystal_maiden_frostbite", --root
 		"modifier_dark_troll_warlord_ensnare", --root
 		"modifier_ember_spirit_searing_chains", --root
@@ -100,17 +99,17 @@ function Activate()
 		"modifier_treant_overgrowth", -- not stop
 		"modifier_generic_root",
 	}
-	GameRules.GameMode.disable_list = {
+	GameRules.XDota.disable_list = {
 		"modifier_elder_titan_echo_stomp", --sleep ?? 
 		"modifier_naga_siren_song_of_the_siren",
 	}
-	GameRules.GameMode.disarm_list = {
+	GameRules.XDota.disarm_list = {
 		"modifier_disarmed", --disarm
 		"modifier_heavens_halberd_debuff", --disarm
 		"modifier_invoker_deafening_blast_disarm", --disarm
 		"modifier_generic_disarm",
 	}	
-	GameRules.GameMode.motion_mod_list = {
+	GameRules.XDota.motion_mod_list = {
 		"modifier_beastmaster_prima_roar_push",
 		"modifier_dark_seer_vacuum", -- + stuns
 		"modifier_storm_spirit_electric_vortex_pull",
@@ -123,26 +122,26 @@ function Activate()
 		"modifier_pudge_meat_hook", -- either above  -- does not stop
 
 	}
-	GameRules.GameMode.hex_list = {
+	GameRules.XDota.hex_list = {
 		"modifier_lion_voodoo", --hex
 		"modifier_necrolyte_reapers_scythe", --hex
 		"modifier_shadow_shaman_voodoo", --hex
 		"modifier_sheepstick_debuff", --hex
 		"modifier_generic_hex",
 	}
-	GameRules.GameMode.banish_list = {
+	GameRules.XDota.banish_list = {
 		"modifier_obsidian_destroyer_astral_imprisonment_prison",
 		"modifier_shadow_demon_disruption",
 		"modifier_earthspirit_petrify",
 		"modifier_generic_banish",
 	}
 
-	GameRules.GameMode.interrupt_list = {
+	GameRules.XDota.interrupt_list = {
 		"modifier_invoker_tornado",
 		"modifier_kunkka_x_marks_the_spot",
 		"modifier_lone_druid_savage_roar",
 		"modifier_magnataur_reverse_polarity",
 		"modifier_magnataur_skewer_impact",
 	}
-	GameRules.GameMode:InitGameMode()
+	GameRules.XDota:InitGameMode()
 end

@@ -4,7 +4,7 @@
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 8
 	m_flConstantRadius = 16.0
-	m_ConstantColor = [ 253, 7, 12, 122 ]
+	m_ConstantColor = [ 6, 253, 11, 122 ]
 	m_nConstantSequenceNumber = 46
 	m_Renderers = 
 	[
@@ -63,7 +63,7 @@
 		{
 			_class = "C_OP_ColorInterpolate"
 			m_flFadeStartTime = 0.125
-			m_ColorFade = [ 79, 0, 1, 255 ]
+			m_ColorFade = [ 0, 79, 38, 255 ]
 		},
 	]
 	m_Initializers = 
@@ -100,7 +100,7 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_spirit_breaker/spirit_breaker_charge_target_flames.vpcf"
+			m_ChildRef = resource:"particles/test_particle/artemis_mark_target_flames.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_spirit_breaker/spirit_breaker_charge_target_glow.vpcf"

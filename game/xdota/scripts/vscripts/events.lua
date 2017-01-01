@@ -1,25 +1,27 @@
--- This file contains all GameMode-registered events and has already set up the passed-in parameters for your use.
-require('libraries/timers')
+-- This file contains all xdota-registered events and has already set up the passed-in parameters for your use.
+
 -- Cleanup a player when they leave
-function GameMode:OnDisconnect(keys)
-  DebugPrint('[GameMode] Player Disconnected ' .. tostring(keys.userid))
+function XDota:OnDisconnect(keys)
+  DebugPrint('[XDOTA] Player Disconnected ' .. tostring(keys.userid))
   DebugPrintTable(keys)
 
   local name = keys.name
   local networkid = keys.networkid
   local reason = keys.reason
   local userid = keys.userid
+
 end
 -- The overall game state has changed
-function GameMode:OnGameRulesStateChange(keys)
-  DebugPrint("[GameMode] GameRules State Changed")
+function XDota:OnGameRulesStateChange(keys)
+  DebugPrint("[XDOTA] GameRules State Changed")
   DebugPrintTable(keys)
+
   local newState = GameRules:State_Get()
 end
 
 -- An NPC has spawned somewhere in game.  This includes heroes
-function GameMode:OnNPCSpawned(keys)
-  DebugPrint("[GameMode] NPC Spawned")
+function XDota:OnNPCSpawned(keys)
+  DebugPrint("[XDOTA] NPC Spawned")
   DebugPrintTable(keys)
 
   local npc = EntIndexToHScript(keys.entindex)
@@ -27,8 +29,8 @@ end
 
 -- An entity somewhere has been hurt.  This event fires very often with many units so don't do too many expensive
 -- operations here
-function GameMode:OnEntityHurt(keys)
-  --DebugPrint("[GameMode] Entity Hurt")
+function XDota:OnEntityHurt(keys)
+  --DebugPrint("[XDOTA] Entity Hurt")
   --DebugPrintTable(keys)
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
@@ -46,8 +48,8 @@ function GameMode:OnEntityHurt(keys)
 end
 
 -- An item was picked up off the ground
-function GameMode:OnItemPickedUp(keys)
-  DebugPrint( '[GameMode] OnItemPickedUp' )
+function XDota:OnItemPickedUp(keys)
+  DebugPrint( '[XDOTA] OnItemPickedUp' )
   DebugPrintTable(keys)
 
   local unitEntity = nil
@@ -64,14 +66,14 @@ end
 
 -- A player has reconnected to the game.  This function can be used to repaint Player-based particles or change
 -- state as necessary
-function GameMode:OnPlayerReconnect(keys)
-  DebugPrint( '[GameMode] OnPlayerReconnect' )
+function XDota:OnPlayerReconnect(keys)
+  DebugPrint( '[XDOTA] OnPlayerReconnect' )
   DebugPrintTable(keys) 
 end
 
 -- An item was purchased by a player
-function GameMode:OnItemPurchased( keys )
-  DebugPrint( '[GameMode] OnItemPurchased' )
+function XDota:OnItemPurchased( keys )
+  DebugPrint( '[XDOTA] OnItemPurchased' )
   DebugPrintTable(keys)
 
   -- The playerID of the hero who is buying something
@@ -87,8 +89,8 @@ function GameMode:OnItemPurchased( keys )
 end
 
 -- An ability was used by a player
-function GameMode:OnAbilityUsed(keys)
-  DebugPrint('[GameMode] AbilityUsed')
+function XDota:OnAbilityUsed(keys)
+  DebugPrint('[XDOTA] AbilityUsed')
   DebugPrintTable(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
@@ -96,16 +98,16 @@ function GameMode:OnAbilityUsed(keys)
 end
 
 -- A non-player entity (necro-book, chen creep, etc) used an ability
-function GameMode:OnNonPlayerUsedAbility(keys)
-  DebugPrint('[GameMode] OnNonPlayerUsedAbility')
+function XDota:OnNonPlayerUsedAbility(keys)
+  DebugPrint('[XDOTA] OnNonPlayerUsedAbility')
   DebugPrintTable(keys)
 
   local abilityname=  keys.abilityname
 end
 
 -- A player changed their name
-function GameMode:OnPlayerChangedName(keys)
-  DebugPrint('[GameMode] OnPlayerChangedName')
+function XDota:OnPlayerChangedName(keys)
+  DebugPrint('[XDOTA] OnPlayerChangedName')
   DebugPrintTable(keys)
 
   local newName = keys.newname
@@ -113,8 +115,8 @@ function GameMode:OnPlayerChangedName(keys)
 end
 
 -- A player leveled up an ability
-function GameMode:OnPlayerLearnedAbility( keys)
-  DebugPrint('[GameMode] OnPlayerLearnedAbility')
+function XDota:OnPlayerLearnedAbility( keys)
+  DebugPrint('[XDOTA] OnPlayerLearnedAbility')
   DebugPrintTable(keys)
 
   local player = EntIndexToHScript(keys.player)
@@ -122,8 +124,8 @@ function GameMode:OnPlayerLearnedAbility( keys)
 end
 
 -- A channelled ability finished by either completing or being interrupted
-function GameMode:OnAbilityChannelFinished(keys)
-  DebugPrint('[GameMode] OnAbilityChannelFinished')
+function XDota:OnAbilityChannelFinished(keys)
+  DebugPrint('[XDOTA] OnAbilityChannelFinished')
   DebugPrintTable(keys)
 
   local abilityname = keys.abilityname
@@ -131,8 +133,8 @@ function GameMode:OnAbilityChannelFinished(keys)
 end
 
 -- A player leveled up
-function GameMode:OnPlayerLevelUp(keys)
-  DebugPrint('[GameMode] OnPlayerLevelUp')
+function XDota:OnPlayerLevelUp(keys)
+  DebugPrint('[XDOTA] OnPlayerLevelUp')
   DebugPrintTable(keys)
 
   local player = EntIndexToHScript(keys.player)
@@ -140,8 +142,8 @@ function GameMode:OnPlayerLevelUp(keys)
 end
 
 -- A player last hit a creep, a tower, or a hero
-function GameMode:OnLastHit(keys)
-  DebugPrint('[GameMode] OnLastHit')
+function XDota:OnLastHit(keys)
+  DebugPrint('[XDOTA] OnLastHit')
   DebugPrintTable(keys)
 
   local isFirstBlood = keys.FirstBlood == 1
@@ -152,8 +154,8 @@ function GameMode:OnLastHit(keys)
 end
 
 -- A tree was cut down by tango, quelling blade, etc
-function GameMode:OnTreeCut(keys)
-  DebugPrint('[GameMode] OnTreeCut')
+function XDota:OnTreeCut(keys)
+  DebugPrint('[XDOTA] OnTreeCut')
   DebugPrintTable(keys)
 
   local treeX = keys.tree_x
@@ -161,8 +163,8 @@ function GameMode:OnTreeCut(keys)
 end
 
 -- A rune was activated by a player
-function GameMode:OnRuneActivated (keys)
-  DebugPrint('[GameMode] OnRuneActivated')
+function XDota:OnRuneActivated (keys)
+  DebugPrint('[XDOTA] OnRuneActivated')
   DebugPrintTable(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
@@ -184,8 +186,8 @@ function GameMode:OnRuneActivated (keys)
 end
 
 -- A player took damage from a tower
-function GameMode:OnPlayerTakeTowerDamage(keys)
-  DebugPrint('[GameMode] OnPlayerTakeTowerDamage')
+function XDota:OnPlayerTakeTowerDamage(keys)
+  DebugPrint('[XDOTA] OnPlayerTakeTowerDamage')
   DebugPrintTable(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
@@ -193,8 +195,8 @@ function GameMode:OnPlayerTakeTowerDamage(keys)
 end
 
 -- A player picked a hero
-function GameMode:OnPlayerPickHero(keys)
-  DebugPrint('[GameMode] OnPlayerPickHero')
+function XDota:OnPlayerPickHero(keys)
+  DebugPrint('[XDOTA] OnPlayerPickHero')
   DebugPrintTable(keys)
 
   local heroClass = keys.hero
@@ -203,8 +205,8 @@ function GameMode:OnPlayerPickHero(keys)
 end
 
 -- A player killed another player in a multi-team context
-function GameMode:OnTeamKillCredit(keys)
-  DebugPrint('[GameMode] OnTeamKillCredit')
+function XDota:OnTeamKillCredit(keys)
+  DebugPrint('[XDOTA] OnTeamKillCredit')
   DebugPrintTable(keys)
 
   local killerPlayer = PlayerResource:GetPlayer(keys.killer_userid)
@@ -214,8 +216,8 @@ function GameMode:OnTeamKillCredit(keys)
 end
 
 -- An entity died
-function GameMode:OnEntityKilled( keys )
-  DebugPrint( '[GameMode] OnEntityKilled Called' )
+function XDota:OnEntityKilled( keys )
+  DebugPrint( '[XDOTA] OnEntityKilled Called' )
   DebugPrintTable( keys )
   
 
@@ -244,18 +246,16 @@ end
 
 -- This function is called 1 to 2 times as the player connects initially but before they 
 -- have completely connected
-function GameMode:PlayerConnect(keys)
-  DebugPrint('[GameMode] PlayerConnect')
+function XDota:PlayerConnect(keys)
+  DebugPrint('[XDOTA] PlayerConnect')
   DebugPrintTable(keys)
 end
 
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
-function GameMode:OnConnectFull(keys)
-  DebugPrint('[GameMode] OnConnectFull')
+function XDota:OnConnectFull(keys)
+  DebugPrint('[XDOTA] OnConnectFull')
   DebugPrintTable(keys)
-
-  GameMode:_OnConnectFull(keys)
-
+  
   local entIndex = keys.index+1
   -- The Player entity of the joining user
   local ply = EntIndexToHScript(entIndex)
@@ -265,16 +265,16 @@ function GameMode:OnConnectFull(keys)
 end
 
 -- This function is called whenever illusions are created and tells you which was/is the original entity
-function GameMode:OnIllusionsCreated(keys)
-  DebugPrint('[GameMode] OnIllusionsCreated')
+function XDota:OnIllusionsCreated(keys)
+  DebugPrint('[XDOTA] OnIllusionsCreated')
   DebugPrintTable(keys)
 
   local originalEntity = EntIndexToHScript(keys.original_entindex)
 end
 
 -- This function is called whenever an item is combined to create a new item
-function GameMode:OnItemCombined(keys)
-  DebugPrint('[GameMode] OnItemCombined')
+function XDota:OnItemCombined(keys)
+  DebugPrint('[XDOTA] OnItemCombined')
   DebugPrintTable(keys)
 
   -- The playerID of the hero who is buying something
@@ -290,8 +290,8 @@ function GameMode:OnItemCombined(keys)
 end
 
 -- This function is called whenever an ability begins its PhaseStart phase (but before it is actually cast)
-function GameMode:OnAbilityCastBegins(keys)
-  DebugPrint('[GameMode] OnAbilityCastBegins')
+function XDota:OnAbilityCastBegins(keys)
+  DebugPrint('[XDOTA] OnAbilityCastBegins')
   DebugPrintTable(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
@@ -299,8 +299,8 @@ function GameMode:OnAbilityCastBegins(keys)
 end
 
 -- This function is called whenever a tower is killed
-function GameMode:OnTowerKill(keys)
-  DebugPrint('[GameMode] OnTowerKill')
+function XDota:OnTowerKill(keys)
+  DebugPrint('[XDOTA] OnTowerKill')
   DebugPrintTable(keys)
 
   local gold = keys.gold
@@ -309,8 +309,8 @@ function GameMode:OnTowerKill(keys)
 end
 
 -- This function is called whenever a player changes there custom team selection during Game Setup 
-function GameMode:OnPlayerSelectedCustomTeam(keys)
-  DebugPrint('[GameMode] OnPlayerSelectedCustomTeam')
+function XDota:OnPlayerSelectedCustomTeam(keys)
+  DebugPrint('[XDOTA] OnPlayerSelectedCustomTeam')
   DebugPrintTable(keys)
 
   local player = PlayerResource:GetPlayer(keys.player_id)
@@ -319,8 +319,8 @@ function GameMode:OnPlayerSelectedCustomTeam(keys)
 end
 
 -- This function is called whenever an NPC reaches its goal position/target
-function GameMode:OnNPCGoalReached(keys)
-  DebugPrint('[GameMode] OnNPCGoalReached')
+function XDota:OnNPCGoalReached(keys)
+  DebugPrint('[XDOTA] OnNPCGoalReached')
   DebugPrintTable(keys)
 
   local goalEntity = EntIndexToHScript(keys.goal_entindex)
@@ -329,7 +329,7 @@ function GameMode:OnNPCGoalReached(keys)
 end
 
 -- This function is called whenever any player sends a chat message to team or All
-function GameMode:OnPlayerChat(keys)
+function XDota:OnPlayerChat(keys)
   local teamonly = keys.teamonly
   local userID = keys.userid
   local playerID = self.vUserIds[userID]:GetPlayerID()

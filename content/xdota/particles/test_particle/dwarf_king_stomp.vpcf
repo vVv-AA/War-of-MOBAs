@@ -16,6 +16,7 @@
 		},
 		{
 			m_ChildRef = resource:"particles/dwarf_king_stomp_ring_progressive.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/test_particle/dwarf_king_stomp_ring.vpcf"
@@ -28,6 +29,7 @@
 		},
 		{
 			m_ChildRef = resource:"particles/test_particle/dwarf_king_stomp_weapon_pnt.vpcf"
+			m_bDisableChild = true
 		},
 	]
 }

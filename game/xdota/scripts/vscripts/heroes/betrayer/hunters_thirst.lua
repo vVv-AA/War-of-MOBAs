@@ -1,5 +1,12 @@
+require("mechanics/talents")
+
 function ApplyLifeSteal( event )
 	event.ability:ApplyDataDrivenModifier(event.caster, event.caster, "modifier_hunter_lifesteal", {duration = 0.03})
+end
+
+function Steal( event )
+	local ability = event.ability
+	event.caster:Heal(event.atk_damage*GetTalentSpecialValueFor(event.ability, "lifesteal")/100, event.ability)
 end
 
 function CooldownReducton( event )
@@ -9,7 +16,7 @@ function CooldownReducton( event )
 	local cooldown_remaining
 	local ability_by_index
 	if caster:HasModifier("double_reduction") then reduction = reduction*2 end
-	for i=1,15 do
+	for i=0, caster:GetAbilityCount()-1 do
 		ability_by_index = caster:GetAbilityByIndex(i)
 		if ability_by_index ~= nil and ability_by_index ~= ability then
 			if ability_by_index:IsCooldownReady() == false then

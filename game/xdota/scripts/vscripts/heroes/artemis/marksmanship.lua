@@ -1,3 +1,5 @@
+require('mechanics/talents')
+
 function AddUpgrades( event )
 	local caster = event.caster
 	local ability = event.ability
@@ -20,7 +22,6 @@ end
 
 function SplitShot( event )
     local caster = event.caster
-
 	if caster.SKIP_ATTACKERINO then
 		return
 	end
@@ -37,14 +38,14 @@ function SplitShot( event )
 
     -- Ability variables
     local radius = caster:GetAttackRange()
-    local max_targets = ability:GetSpecialValueFor("arrow_count")
+    local max_targets = GetTalentSpecialValueFor(ability, "arrow_count")
 
     local split_shot_targets = FindUnitsInRadius(caster:GetTeamNumber(), caster_location, nil, caster:GetAttackRange(), target_team, target_type, target_flags, FIND_CLOSEST, false)
 	caster.SKIP_ATTACKERINO = true
 
     for _,unit in pairs(split_shot_targets) do
         if unit ~= attack_target then
-        	caster:PerformAttack(unit, caster:FindAbilityByName("aimed_shot_datadriven"):GetAutoCastState(), true, true, false, true)
+        	caster:PerformAttack(unit, caster:FindAbilityByName("artemis_aimed_shot_datadriven"):GetAutoCastState(), true, true, false, true)
             max_targets = max_targets - 1
         end
         -- If we reached the maximum amount of targets then break the loop

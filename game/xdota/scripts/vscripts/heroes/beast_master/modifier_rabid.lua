@@ -1,13 +1,13 @@
 if modifier_rabid == nil then
     modifier_rabid = class({})
 end
- 
+
 function modifier_rabid:IsDebuff()
     return false
 end
 
 function modifier_rabid:IsHidden()
-    return false
+    return true
 end
 
 function modifier_rabid:IsPurgable()

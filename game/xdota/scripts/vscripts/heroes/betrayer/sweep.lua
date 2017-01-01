@@ -11,7 +11,7 @@ function Sweep( keys )
 	local distance = (target_point - caster_location):Length2D()
 	local direction = (target_point - caster_location):Normalized()
 	local duration = distance/speed
-	local max_distance = ability:GetLevelSpecialValueFor("tooltip_range", (ability:GetLevel() - 1))
+	local max_distance = ability:GetLevelSpecialValueFor("sweep_range", (ability:GetLevel() - 1))
 
 	if distance > max_distance then
 		distance = max_distance
@@ -68,23 +68,23 @@ function SweepMotion( keys )
 			if ability:GetLevel() > 2 then
 				if count < 2 then
 					print(count)
-					ability:ApplyDataDrivenModifier(caster, caster, "modifier_bonus_damage", {})
+					ability:ApplyDataDrivenModifier(caster, caster, "modifier_sweep_bonus_damage", {})
 				else
 					print(count)
-					ability:ApplyDataDrivenModifier(caster, caster, "modifier_bonus_damage_greater", {})
+					ability:ApplyDataDrivenModifier(caster, caster, "modifier_sweep_bonus_damage_greater", {})
 					if count > 4 then
-						ability:ApplyDataDrivenModifier(caster, caster, "modifier_bonus_damage_greatest", {})
+						ability:ApplyDataDrivenModifier(caster, caster, "modifier_sweep_bonus_damage_greatest", {})
 					end
 				end
 			else
-				ability:ApplyDataDrivenModifier(caster, caster, "modifier_bonus_damage", {})
+				ability:ApplyDataDrivenModifier(caster, caster, "modifier_sweep_bonus_damage", {})
 			end
 		end
 
 		if count == 0 then
 			local cooldown = ability:GetCooldownTimeRemaining()
 			ability:EndCooldown()
-			ability:StartCooldown(math.max(cooldown - 4, 0))
+			ability:StartCooldown(math.max(cooldown - ability:GetCooldown(1)/2, 0))
 		end
 		caster:RemoveModifierByName("modifier_sweeping_strike_datadriven")
 		caster:InterruptMotionControllers(false)
