@@ -611,61 +611,6 @@
 	            }
 	        }
 	    }
-	    
-	//#=========================================#
-	//#					Spells	X				#
-	//#					Talents	X				#
-	//#					Tooltips X				#
-	//#					Testing	X				#
-	//#=========================================#
-	
-	
-	"npc_dota_hero_igneous"
-	  {
-	    "AbilityLayout"   "7"
-	    "override_hero"   "npc_dota_hero_tiny"
-	    "SoundSet"        "Hero_Tiny"
-	    "Ability1"        "magma_smash_datadriven" 
-	    "Ability2"        "lava_pool_datadriven" 
-	    "Ability3"        "magma_bond_datadriven" 
-	    "Ability4"        "taunt_datadriven"
-	    "Ability5"        "war_club_datadriven"
-	    "Ability6"        "volcano_datadriven"
-	    "Ability7"        "lavaling_datadriven"
-	    "Ability8"        "attribute_bonus"
-	
-	    "Model"                     "models/heroes/tiny_04/tiny_04.vmdl"
-	
-	    // Armor
-	    //-------------------------------------------------------------------------------------------------------------
-	    "ArmorPhysical"             "0.45"                              // Physical protection.
-	    "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
-	    "AttackDamageMin"           "30"                                    // Damage range min.
-	    "AttackDamageMax"           "33"                                    // Damage range max.
-	    "AttackRate"                "1.7"                                   // Speed of attack.
-	    "AttackAnimationPoint"      "0.56"                                  // Normalized time in animation cycle to attack.
-	    "AttackAcquisitionRange"    "600"                                   // Range within a target can be acquired.
-	    "AttackRange"               "150"                                   // Range within a target can be attacked.
-	    "url"                       "Tiny"
-	
-	    // Attributes
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AttributePrimary"              "DOTA_ATTRIBUTE_STRENGTH"
-	    "AttributeBaseStrength"         "23"                                    // Base strength
-	    "AttributeStrengthGain"         "2.4"                                   // Strength bonus per level.
-	    "AttributeBaseAgility"          "18"                                    // Base agility
-	    "AttributeAgilityGain"          "1.2"                                   // Agility bonus per level.
-	    "AttributeBaseIntelligence"     "19"                                    // Base intelligence
-	    "AttributeIntelligenceGain"     "2.1"                                   // Intelligence bonus per level.
-	
-	        // Movement
-	        //-------------------------------------------------------------------------------------------------------------
-	        "MovementSpeed"             "285"                                   // Speed.
-	        "MovementTurnRate"          "0.5"                                   // Turning rate.
-	        "HasAggressiveStance"       "1"                                         // Plays alternate idle/run animation when near enemies
-	        "HealthBarOffset"           "175"
-	    }
-
 	//#=========================================#
 	//#					Spells	X				#
 	//#					Talents	X				#
@@ -703,7 +648,8 @@
 	        "Ability5"      "polybomb_datadriven"
 	        "Ability6"      "fate_edict_datadriven"
 	        "Ability7"      "oracle_telekinesis_datadriven"
-	        "Ability8"      "attribute_bonus"
+	        "Ability10"		"special_bonus_unique_oracle_no_mod"
+	        "Ability14"		"special_bonus_unique_oracle_polybomb"
 	        "ArmorPhysical"     "0"
 	        "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
 	        "AttackDamageMin"       "22"

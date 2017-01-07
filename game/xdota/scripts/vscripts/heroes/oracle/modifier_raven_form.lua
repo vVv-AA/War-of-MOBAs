@@ -28,7 +28,7 @@ end
 function modifier_raven_form:CheckState()
     local state = {
         [MODIFIER_STATE_FLYING] = true,
-        [MODIFIER_STATE_INVULNERABLE] = true,
+        [MODIFIER_STATE_MAGIC_IMMUNE] = true,
     }
     return state
 end

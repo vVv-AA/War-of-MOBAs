@@ -1,5 +1,25 @@
-LinkLuaModifier("hex_polybomb", "heroes/oracle/hex_polybomb.lua", LUA_MODIFIER_MOTION_NONE)
+require('mechanics/talents')
 require("heroes/generics/Disables")
+LinkLuaModifier("hex_polybomb", "heroes/oracle/hex_polybomb.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("hex_polybomb_modifier_particles_small", "heroes/oracle/hex_polybomb.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("hex_polybomb_modifier_particles_large", "heroes/oracle/hex_polybomb.lua", LUA_MODIFIER_MOTION_NONE)
+
+if hex_polybomb_modifier_particles_small == nil then
+    hex_polybomb_modifier_particles_small = class({})
+end
+
+function hex_polybomb_modifier_particles_small:GetEffectName()
+    return "particles/test_particle/polybomb_bounce_indicator.vpcf"
+end
+
+if hex_polybomb_modifier_particles_large == nil then
+    hex_polybomb_modifier_particles_large = class({})
+end
+
+function hex_polybomb_modifier_particles_large:GetEffectName()
+    return "particles/test_particle/polybomb_bounce_indicator_150_extra_radius.vpcf"
+end
+
 
 if hex_polybomb == nil then
     hex_polybomb = class({})
@@ -7,6 +27,11 @@ end
 
 function hex_polybomb:OnCreated( kv )
     if IsServer() then
+        if GetTalentSpecialValueFor(self:GetAbility(), "bounce_aoe") == self:GetAbility():GetSpecialValueFor("bounce_aoe") then
+            self:GetParent():AddNewModifier(self:GetCaster(), self:GetAbility(), "hex_polybomb_modifier_particles_small", {duration = self:GetAbility():GetDuration()})
+        else
+            self:GetParent():AddNewModifier(self:GetCaster(), self:GetAbility(), "hex_polybomb_modifier_particles_large", {duration = self:GetAbility():GetDuration()})
+        end
         self.movespeed = kv.movespeed
         if kv.purgable ~= nil then
             self.purgable = kv.purgable
@@ -31,13 +56,8 @@ function hex_polybomb:OnCreated( kv )
     end
 end
 
-function hex_polybomb:GetEffectName()
-    return "particles/test_particle/polybomb_bounce_indicator.vpcf"
-end
-
 function hex_polybomb:GetAttributes()
     return MODIFIER_ATTRIBUTE_MULTIPLE
-    -- body
 end
 
 function hex_polybomb:GetTexture()
@@ -65,7 +85,7 @@ function hex_polybomb:OnDestroy()
     local target_team = DOTA_UNIT_TARGET_TEAM_ENEMY
     local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
 
-    local units = FindUnitsInRadius(self:GetAbility():GetOwner():GetTeamNumber(), holder_location, nil, self:GetAbility():GetSpecialValueFor("bounce_aoe"), target_team, target_type, target_flags, FIND_CLOSEST, false)
+    local units = FindUnitsInRadius(self:GetAbility():GetOwner():GetTeamNumber(), holder_location, nil, GetTalentSpecialValueFor(self:GetAbility(), "bounce_aoe") , target_team, target_type, target_flags, FIND_CLOSEST, false)
 
     if #units > 1 then
         for _,unit in ipairs(units) do

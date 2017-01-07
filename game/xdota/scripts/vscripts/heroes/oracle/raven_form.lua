@@ -22,7 +22,6 @@ function Transform( keys )
 		caster:RemoveModifierByName("modifier_move_speed_bonus_pct")
 		caster:RemoveModifierByName("modifier_generic_disarm")
 	else
-		--caster:AddNewModifier(caster, ability, "modifier_generic_no_mod", {purgable = false})
 		local params = 
 		{
 			caster = caster,
@@ -32,8 +31,13 @@ function Transform( keys )
 			purgable = false,
 		}
 		ApplyDisarm(params)
-		ability:ApplyDataDrivenModifier(caster, caster, "modifier_move_speed_bonus_pct", {})	
 		caster:AddNewModifier(caster, ability, "modifier_raven_form", {purgable = false})
-		-- Add perma linken mod	
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_move_speed_bonus_pct", {})	
+		local special_ability = caster:FindAbilityByName("special_bonus_unique_oracle_no_mod")
+		if special_ability ~= nil then
+			if special_ability:GetLevel() > 0 then
+			caster:AddNewModifier(caster, ability, "modifier_generic_no_mod", {purgable = false})
+			end
+		end
 	end
 end

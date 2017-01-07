@@ -17,7 +17,7 @@ function modifier_bonus_vision:IsDebuff()
 end
 
 function modifier_bonus_vision:IsHidden()
-    return false
+    return true
 end
 
 function modifier_bonus_vision:IsPurgable()
@@ -29,7 +29,10 @@ function modifier_bonus_vision:SetBonus( params )
 end
 
 function modifier_bonus_vision:GetAttributes() 
-    return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE 
+    return {
+        MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE,
+        MODIFIER_ATTRIBUTE_PERMANENT,
+    }
 end
 
 function modifier_bonus_vision:DeclareFunctions( params )

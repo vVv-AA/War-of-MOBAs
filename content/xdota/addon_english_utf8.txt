@@ -54,7 +54,13 @@
 		// ******************** ABILITY MODIFIERS ********************
 
 		"DOTA_Tooltip_modifier_30_magic_resistance"                                       "+30% Magic resistance"
-		"DOTA_Tooltip_modifier_30_magic_resistance_Description"                           "+30% Magic resistance"
+		"DOTA_Tooltip_modifier_30_magic_resistance_Description"                           "+30 pct Magic resistance"
+
+		"DOTA_Tooltip_modifier_45_atk_speed_aura_allies"                                  "+45 Atk Speed"
+		"DOTA_Tooltip_modifier_45_atk_speed_aura_allies_Description"                      "+45 Atk Speed"
+
+		"DOTA_Tooltip_modifier_25_pct_damage_allies"                                      "+25% Damage"
+		"DOTA_Tooltip_modifier_25_pct_damage_allies_Description"                          "+25 pct Damage"
 
 		"DOTA_Tooltip_modifier_frenzy_naix"                                               "Frenzy Naix"
 		"DOTA_Tooltip_modifier_frenzy_naix_Description"                                   ""
@@ -84,7 +90,7 @@
 		"DOTA_Tooltip_modifier_split_shot_Description"                                    "Unit's attack splinters off multiple times."
 
 		"DOTA_Tooltip_modifier_shocker"                                                	  "Static Field"
-		"DOTA_Tooltip_modifier_shocker_Description"                                       "Enemies take 18% of their current health as damage when Dwarf King casts any ability."
+		"DOTA_Tooltip_modifier_shocker_Description"                                       "Enemies take 18 pct of their current health as damage when Dwarf King casts any ability."
 
 		"DOTA_Tooltip_modifier_phased"													  "Phased"
 		"DOTA_Tooltip_modifier_phased_Description"                                  	  "Unit has phased movement."
@@ -168,7 +174,7 @@
 		"DOTA_Tooltip_modifier_collector_Description"                                     ""
 
 		"DOTA_Tooltip_rapid_fire_charges"                                                 "Rapid Fire Charges"
-		"DOTA_Tooltip_rapid_fire_charges_Description"                                     ""
+		"DOTA_Tooltip_rapid_fire_charges_Description"                                     "Can use Rapid Fire while there are still charges left."
 
 		"DOTA_Tooltip_modifier_life_drainer"                                              "Life Drainer"
 		"DOTA_Tooltip_modifier_life_drainer_Description"                                  ""
@@ -201,7 +207,7 @@
 		"DOTA_Tooltip_dummy_modifier_Description"                                         ""
 
 		"DOTA_Tooltip_modifier_avatar"                                                    "Avatar"
-		"DOTA_Tooltip_modifier_avatar_Description"                                        "Passively reduces ability cooldowns on attacks and bashes every third attack. When activated, increases Dwarf King's Health, Armor and Base Attack, and a 20% chance to bash."
+		"DOTA_Tooltip_modifier_avatar_Description"                                        "Passively reduces ability cooldowns on attacks and bashes every third attack. When activated, increases Dwarf King's Health, Armor and Base Attack, and a 20 pct chance to bash."
 
 		"DOTA_Tooltip_modifier_stone_form"                                                "Stone Form"
 		"DOTA_Tooltip_modifier_stone_form_Description"                                    "Rapidly regenerating health."
@@ -231,7 +237,7 @@
 		"DOTA_Tooltip_modifier_adrenaline_surge_Description"                              "Regaining health rapidly."
 
 		"DOTA_Tooltip_modifier_assassination_slow"                                        "Assissinate Slow"
-		"DOTA_Tooltip_modifier_assassination_slow_Description"                            "Slowed by 30%"
+		"DOTA_Tooltip_modifier_assassination_slow_Description"                            "Slowed by 30 pct."
 
 		"DOTA_Tooltip_modifier_battle_lust_bonus_speed_caster"                            "Battle Lust"
 		"DOTA_Tooltip_modifier_battle_lust_bonus_speed_caster_Description"                "Has increased attack and move speed"
@@ -357,7 +363,7 @@
 		"DOTA_Tooltip_modifier_special_bonus_150_range_Description"                       "+150 attack range"
 
 		"DOTA_Tooltip_modifier_special_bonus_ms_20"                                       "Movespeed Talent"
-		"DOTA_Tooltip_modifier_special_bonus_ms_20_Description"                           "+20% Move Speed"
+		"DOTA_Tooltip_modifier_special_bonus_ms_20_Description"                           "+20 pct Move Speed"
 
 		"DOTA_Tooltip_modifier_natures_curse_passive"                                     "Natures Curse"
 		"DOTA_Tooltip_modifier_natures_curse_passive_Description"                         "Roots attacker"
@@ -496,7 +502,7 @@
 		"DOTA_Tooltip_ability_betrayer_dive_datadriven_marked_for_death_damage"           "MARKED FOR DEATH DAMAGE:"
 
 		"DOTA_Tooltip_ability_betrayer_evasion_datadriven"                                "Evasion"
-		"DOTA_Tooltip_ability_betrayer_evasion_datadriven_Description"                    "Evades enemy attacks. Can be activated to provide 100% evasion and bonus magic resistance."
+		"DOTA_Tooltip_ability_betrayer_evasion_datadriven_Description"                    "Evades enemy attacks. Can be activated to provide 100 pct evasion and bonus magic resistance."
 		"DOTA_Tooltip_ability_betrayer_evasion_datadriven_Note0"                          ""
 		"DOTA_Tooltip_ability_betrayer_evasion_datadriven_Lore"                           ""
 		"DOTA_Tooltip_ability_betrayer_evasion_datadriven_evasion_active"                 "EVASION ACTIVE:"
@@ -669,7 +675,7 @@
 		"DOTA_Tooltip_ability_dummy_passive_Lore"                                         ""
 
 		"DOTA_Tooltip_ability_dwarf_king_avatar"                                          "Avatar"
-		"DOTA_Tooltip_ability_dwarf_king_avatar_Description"                              "Passively reduces ability cooldowns on attacks and bashes every third attack. When activated, increases Dwarf King's Health, Armor and Base Attack, provides 100% bash for the duration and reduces disable durations."
+		"DOTA_Tooltip_ability_dwarf_king_avatar_Description"                              "Passively reduces ability cooldowns on attacks and bashes every third attack. When activated, increases Dwarf King's Health, Armor and Base Attack, provides 100 pct bash for the duration and reduces disable durations."
 		"DOTA_Tooltip_ability_dwarf_king_avatar_Note0"                                    ""
 		"DOTA_Tooltip_ability_dwarf_king_avatar_Lore"                                     ""
 		"DOTA_Tooltip_ability_dwarf_king_avatar_duration"                                 "DURATION:"
@@ -1132,6 +1138,9 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_betrayer_betray_Note0"                    ""
 		"DOTA_Tooltip_ability_special_bonus_unique_betrayer_betray_Lore"                     ""
 
+		"DOTA_Tooltip_ability_special_bonus_unique_45_atk_speed_aura"                     "+45 Atk Speed Aura"
+		"DOTA_Tooltip_ability_special_bonus_unique_25_pct_damage_aura"                    "+25% Damage Aura"
+
 		"DOTA_Tooltip_ability_special_bonus_unique_bonus_60_atk_speed_datadriven"            "+60 attack speed"
 		"DOTA_Tooltip_ability_special_bonus_unique_bonus_60_atk_speed_datadriven_Description"		"+60 attack speed"
 		"DOTA_Tooltip_ability_special_bonus_unique_bonus_60_atk_speed_datadriven_Note0"      ""
@@ -1228,7 +1237,7 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_wrap_strike_Description"               ""
 		"DOTA_Tooltip_ability_special_bonus_unique_wrap_strike_Note0"                     ""
 		"DOTA_Tooltip_ability_special_bonus_unique_wrap_strike_Lore"                      ""
-		
+
 		"DOTA_Tooltip_ability_special_bonus_unique_vylanas_aoe_stifling_daggers"          "Stifling Daggers becomes AoE spell."
 
 		"DOTA_Tooltip_ability_special_bonus_unique_vylanas_will_of_the_forsaken"          "+100% damage block after Will of the Forsaken."

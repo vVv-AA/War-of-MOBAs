@@ -6857,7 +6857,8 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"bounce_aoe"		"550"
+				"bounce_aoe"		"350"
+				"LinkedSpecialBonus"	"special_bonus_unique_oracle_polybomb"
 			}
 			"02"
 			{
@@ -7993,7 +7994,7 @@
 				"IsDebuff"			"0"
 				"TextureName"		"antimage_spell_shield"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-
+				
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%magic_resistance"
@@ -8534,7 +8535,31 @@
 			}
 		}
 	}
+	"special_bonus_unique_oracle_no_mod"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             		"ability_datadriven"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+	"special_bonus_unique_oracle_polybomb"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             		"ability_datadriven"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bounce_aoe"		"150"
+			}
+		}
+	}
 	"special_bonus_unique_poseidon_gush_double_range"
 	{
 		// General
