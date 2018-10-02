@@ -42,6 +42,9 @@ require('settings')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core xdota files.
 require('events')
 
+-- talents.lua is where we will handle talent ability logic.
+require('mechanics/talents')
+
 
 -- This is a detailed example of many of the containers.lua possibilities, but only activates if you use the provided "playground" map
 if GetMapName() == "playground" then
@@ -157,6 +160,7 @@ function XDota:OnUpgradeAbility( keys )
     if PlayerResource:IsValidPlayer(keys.player - 1) then
         local hero = PlayerResource:GetSelectedHeroEntity( keys.player - 1)
 		local ability = hero:FindAbilityByName(keys.abilityname)
+		Upgrade(hero, ability)
 	end
 end
 

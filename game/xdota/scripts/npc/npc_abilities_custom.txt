@@ -7628,7 +7628,7 @@
 			{
 				"Passive" "1"
 				"IsHidden"	"1"
-	
+
 				"OnAbilityExecuted"
 				{
 					"DelayedAction"
@@ -7835,7 +7835,7 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
+
 		"AbilitySpecial"
 		{
 			"01"
@@ -7852,16 +7852,6 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/artemis/talents.lua"
-				"Function"		"Upgrade"
-				"talent"		"special_bonus_unique_artemis_proprioception"
-			}
-		}
 	}
 	"special_bonus_unique_artemis_split_shot_datadriven"
 	{
@@ -7870,7 +7860,7 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
+
 		"AbilitySpecial"
 		{
 			"01"
@@ -7887,15 +7877,6 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/beast_master/talents.lua"
-				"Function"		"GiveOtherSpell"
-			}
-		}
 	}
 
 	"special_bonus_unique_beast_master_tough_exterior"
@@ -7905,21 +7886,12 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/beast_master/talents.lua"
-				"Function"		"Upgrade"
-			}
-		}
 	}
 	"special_bonus_unique_betrayer_lifesteal"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"special_bonus_unique_axe"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	
@@ -7936,43 +7908,23 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"special_bonus_unique_axe"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/betrayer/talents.lua"
-				"Function"		"Upgrade"
-				"talent"		"special_bonus_unique_betrayer_marked_for_death"
-			}
-		}
 	}
 	"special_bonus_unique_betrayer_never_ending_hatred"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"special_bonus_unique_antimage"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/betrayer/talents.lua"
-				"Function"		"Upgrade"
-				"talent"		"special_bonus_unique_betrayer_never_ending_hatred"
-			}
-		}
 	}
 	"special_bonus_unique_betrayer_30_magic_resistance"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"special_bonus_unique_antimage"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -7984,59 +7936,22 @@
 				"magic_resistance"	"30"
 			}
 		}
-
-		"Modifiers"
-		{
-			"modifier_30_magic_resistance"
-			{
-				"Passive"			"1"
-				"IsHidden"			"0"
-				"IsDebuff"			"0"
-				"TextureName"		"antimage_spell_shield"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%magic_resistance"
-				}
-			}
-		}
 	}
 	"special_bonus_unique_betrayer_betray"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"special_bonus_unique_antimage"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/betrayer/talents.lua"
-				"Function"		"Upgrade"
-				"talent"		"special_bonus_unique_betrayer_betray"
-			}
-		}
 	}
 	"special_bonus_unique_betrayer_permanent_immolation"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"special_bonus_unique_antimage"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/betrayer/talents.lua"
-				"Function"		"Upgrade"
-				"talent"		"special_bonus_unique_betrayer_permanent_immolation"
-			}
-		}
 	}
 
 	"special_bonus_unique_wrap_strike"
@@ -8046,15 +7961,6 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/sniper/talents.lua"
-				"Function"		"Upgrade"
-			}
-		}
 	}
 
 	"special_bonus_unique_bonus_200_health"
@@ -8071,21 +7977,6 @@
 			{
 				"var_type"			"FIELD_INTEGER"
 				"health"			"200"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_200_health_bonus"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				"IsDebuff"			"0"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS" "%health"
-				}
 			}
 		}
 	}
@@ -8105,21 +7996,6 @@
 				"bonus_range"		"150"
 			}
 		}
-	
-		"Modifiers"
-		{
-			"modifier_special_bonus_150_range"
-			{
-				"Passive"			"1"
-				"IsPurgable"		"0"
-				"IsBuff"			"1"
-				"IsHidden"			"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%bonus_range"
-				}
-			}
-		}
 	}
 	"special_bonus_unique_bonus_40_attack_damage_datadriven"
 	{
@@ -8135,22 +8011,6 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_damage"			"40"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_special_bonus_40_damage"
-			{
-				"Passive"			"1"
-				"IsPurgable"		"0"
-				"IsBuff"			"1"
-				"IsHidden"			"1"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%bonus_damage"
-				}
 			}
 		}
 	}
@@ -8170,22 +8030,6 @@
 				"bonus_attack_speed"	"60"
 			}
 		}
-	
-		"Modifiers"
-		{
-			"modifier_special_bonus_60_atk_speed"
-			{
-				"Passive"			"1"
-				"IsPurgable"		"0"
-				"IsBuff"			"1"
-				"IsHidden"			"1"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				}
-			}
-		}
 	}
 
 	"special_bonus_unique_bonus_120_atk_speed_datadriven"
@@ -8202,22 +8046,6 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_attack_speed"	"120"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_special_bonus_120_atk_speed"
-			{
-				"Passive"			"1"
-				"IsPurgable"		"0"
-				"IsBuff"			"1"
-				"IsHidden"			"1"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				}
 			}
 		}
 	}
@@ -8262,7 +8090,7 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"special_bonus_undefined"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -8325,16 +8153,8 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/dwarf_king/talents.lua"
-				"Function"		"Upgrade"
-			}
-		}
 	}
+
 	"special_bonus_unique_dwarf_king_avatar_bash"
 	{
 		// General
@@ -8491,10 +8311,10 @@
 				"IsHidden"			"1"
 				"IsDebuff"			"0"
 		
-					"Properties"
-					{
-						"MODIFIER_PROPERTY_RESPAWNTIME" "%reduced_respawn_time"
-					}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_RESPAWNTIME" "%reduced_respawn_time"
+				}
 			}
 		}
 	}
@@ -8506,16 +8326,6 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/omniknight/talents.lua"
-				"Function"		"Upgrade"
-				"talent"		"special_bonus_unique_omni_sacred_duty_datadriven"
-			}
-		}
 	}
 	"special_bonus_unique_omni_unbreakable_fortitude"
 	{
@@ -8524,16 +8334,6 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/omniknight/talents.lua"
-				"Function"		"Upgrade"
-				"talent"		"special_bonus_unique_omni_unbreakable_fortitude"
-			}
-		}
 	}
 	"special_bonus_unique_oracle_no_mod"
 	{
@@ -8732,16 +8532,6 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/vylanas/talents.lua"
-				"Function"		"Upgrade"
-				"talent"		"special_bonus_unique_vylanas_aoe_stifling_daggers"
-			}
-		}
 	}
 
 	"special_bonus_unique_vylanas_will_of_the_forsaken"
@@ -8769,16 +8559,6 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/vylanas/talents.lua"
-				"Function"		"Upgrade"
-				"talent"		"special_bonus_unique_vylanas_will_of_the_dead"
-			}
-		}
 	}
 
 	"special_bonus_unique_vylanas_will_of_the_dead_copy"
